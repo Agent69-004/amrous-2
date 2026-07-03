@@ -79,7 +79,7 @@
       border-radius: 10px;
     }
 
-    /* ---------- CUSTOM CURSOR (optional flair) ---------- */
+    /* ---------- CUSTOM CURSOR GLOW ---------- */
     .cursor-glow {
       position: fixed;
       width: 300px;
@@ -319,14 +319,16 @@
       border-radius: 4px;
     }
 
-    /* ---------- HERO (VIDEO + PARALLAX) ---------- */
+    /* ---------- HERO (VIDEO + CENTERED LUXURY) ---------- */
     .hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
+      justify-content: center;
       position: relative;
       overflow: hidden;
       background: var(--dark);
+      text-align: center;
     }
 
     .hero-video {
@@ -349,31 +351,44 @@
     .hero-overlay-gradient {
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 20% 50%, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.7) 100%);
+      background: radial-gradient(circle at center, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.7) 100%);
       z-index: 1;
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      max-width: 800px;
-      padding: 40px 0;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: rgba(212, 175, 55, 0.12);
+      background: rgba(212, 175, 55, 0.10);
       backdrop-filter: blur(12px);
-      padding: 10px 24px;
+      padding: 10px 28px;
       border-radius: 40px;
-      font-size: 0.85rem;
-      letter-spacing: 1px;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
       color: var(--gold-light);
       border: 1px solid rgba(212, 175, 55, 0.15);
       margin-bottom: 28px;
-      animation: fadeInUp 1s ease-out;
     }
 
     .hero-badge i {
@@ -390,16 +405,20 @@
       }
     }
 
+    /* --- LUXURY CENTERED TITLE --- */
     .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 5.2rem;
+      font-size: clamp(3.8rem, 10vw, 7rem);
       font-weight: 700;
+      letter-spacing: clamp(6px, 1.2vw, 16px);
+      text-transform: uppercase;
       line-height: 1.05;
-      margin-bottom: 20px;
-      animation: fadeInUp 1s ease-out 0.1s both;
+      margin-bottom: 4px;
+      color: var(--text-primary);
+      text-shadow: 0 4px 40px rgba(0, 0, 0, 0.4);
     }
 
-    .hero h1 .highlight {
+    .hero h1 .gold {
       background: linear-gradient(135deg, var(--gold), #f5d76e, var(--gold-dark));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -407,38 +426,52 @@
       text-shadow: 0 0 60px rgba(212, 175, 55, 0.15);
     }
 
-    .hero p {
-      font-size: 1.25rem;
-      color: rgba(255, 255, 255, 0.8);
-      max-width: 540px;
-      margin-bottom: 40px;
-      line-height: 1.8;
-      animation: fadeInUp 1s ease-out 0.2s both;
+    /* --- DECORATIVE SEPARATOR --- */
+    .hero-separator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      margin: 16px auto 22px;
+      max-width: 360px;
     }
 
+    .hero-separator span {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .hero-separator i {
+      color: var(--gold);
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    /* --- TAGLINE --- */
+    .hero-tagline {
+      font-size: clamp(0.9rem, 1.2vw, 1.2rem);
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.6);
+      font-weight: 300;
+      margin-bottom: 40px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* --- BUTTONS & STATS (centered) --- */
     .hero-buttons {
       display: flex;
       flex-wrap: wrap;
       gap: 16px;
-      animation: fadeInUp 1s ease-out 0.3s both;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      justify-content: center;
     }
 
     .hero-stats {
       display: flex;
-      gap: 48px;
+      justify-content: center;
+      gap: 56px;
       margin-top: 56px;
-      animation: fadeInUp 1s ease-out 0.4s both;
     }
 
     .hero-stat {
@@ -455,14 +488,14 @@
     }
 
     .hero-stat .label {
-      font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.4);
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 2px;
       margin-top: 4px;
     }
 
-    /* ---------- FLOATING SCROLL INDICATOR ---------- */
+    /* ---------- SCROLL INDICATOR ---------- */
     .scroll-indicator {
       position: absolute;
       bottom: 40px;
@@ -470,7 +503,7 @@
       transform: translateX(-50%);
       z-index: 2;
       color: rgba(255, 255, 255, 0.3);
-      font-size: 0.8rem;
+      font-size: 0.7rem;
       letter-spacing: 2px;
       text-transform: uppercase;
       display: flex;
@@ -544,7 +577,7 @@
       color: rgba(255, 255, 255, 0.6);
     }
 
-    /* ---------- REVEAL ANIMATIONS (enhanced) ---------- */
+    /* ---------- REVEAL ANIMATIONS ---------- */
     .reveal {
       opacity: 0;
       transform: translateY(60px) scale(0.96);
@@ -579,18 +612,7 @@
       transform: translateX(0) scale(1);
     }
 
-    .reveal-rotate {
-      opacity: 0;
-      transform: rotate(-5deg) scale(0.9);
-      transition: opacity 0.9s cubic-bezier(0.23, 1, 0.32, 1),
-        transform 0.9s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-    .reveal-rotate.visible {
-      opacity: 1;
-      transform: rotate(0) scale(1);
-    }
-
-    /* ---------- ABOUT (with animated border) ---------- */
+    /* ---------- ABOUT ---------- */
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -676,7 +698,7 @@
       font-size: 1rem;
     }
 
-    /* ---------- ROOMS (3D Tilt) ---------- */
+    /* ---------- ROOMS ---------- */
     .rooms-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -863,7 +885,7 @@
       width: 24px;
     }
 
-    /* ---------- ACTIVITIES (animated icons) ---------- */
+    /* ---------- ACTIVITIES ---------- */
     .activities-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -923,7 +945,7 @@
       font-size: 0.9rem;
     }
 
-    /* ---------- GALLERY (masonry + lightbox) ---------- */
+    /* ---------- GALLERY ---------- */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -988,7 +1010,7 @@
       height: 538px;
     }
 
-    /* ---------- VIRTUAL TOUR (with animated ring) ---------- */
+    /* ---------- VIRTUAL TOUR ---------- */
     .virtual-tour {
       background: linear-gradient(135deg, #121212, #0a0a0a);
       border-radius: var(--radius);
@@ -1065,7 +1087,7 @@
       z-index: 1;
     }
 
-    /* ---------- TESTIMONIALS (auto-scroll) ---------- */
+    /* ---------- TESTIMONIALS ---------- */
     .testimonials-wrapper {
       position: relative;
       overflow: hidden;
@@ -1131,7 +1153,7 @@
       font-size: 0.85rem;
     }
 
-    /* ---------- BLOG (with hover reveal) ---------- */
+    /* ---------- BLOG ---------- */
     .blog-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -1205,7 +1227,7 @@
       gap: 16px;
     }
 
-    /* ---------- OFFERS (with countdown) ---------- */
+    /* ---------- OFFERS ---------- */
     .offers-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -1366,7 +1388,7 @@
       filter: grayscale(0.3) invert(0.05);
     }
 
-    /* ---------- BOOK SECTION (with floating particles) ---------- */
+    /* ---------- BOOK SECTION ---------- */
     #book {
       text-align: center;
       position: relative;
@@ -1472,7 +1494,7 @@
       color: var(--gold);
     }
 
-    /* ---------- WHATSAPP FLOAT (with pulse) ---------- */
+    /* ---------- WHATSAPP FLOAT ---------- */
     .whatsapp-float {
       position: fixed;
       bottom: 32px;
@@ -1509,9 +1531,6 @@
 
     /* ---------- RESPONSIVE ---------- */
     @media (max-width: 1024px) {
-      .hero h1 {
-        font-size: 3.8rem;
-      }
       .about-grid,
       .restaurant-grid,
       .contact-grid {
@@ -1533,6 +1552,9 @@
       }
       .section-title {
         font-size: 2.8rem;
+      }
+      .hero-stats {
+        gap: 36px;
       }
     }
 
@@ -1569,11 +1591,8 @@
         transform: rotate(-45deg) translate(6px, -6px);
       }
 
-      .hero h1 {
-        font-size: 2.6rem;
-      }
       .hero-stats {
-        gap: 28px;
+        gap: 24px;
         flex-wrap: wrap;
       }
       .hero-stat .number {
@@ -1615,11 +1634,16 @@
       .scroll-indicator {
         display: none;
       }
+      .hero-separator {
+        max-width: 240px;
+        gap: 16px;
+      }
     }
 
     @media (max-width: 480px) {
       .hero h1 {
-        font-size: 2rem;
+        font-size: clamp(2.8rem, 12vw, 3.8rem);
+        letter-spacing: 4px;
       }
       .btn-primary,
       .btn-outline,
@@ -1650,6 +1674,9 @@
       }
       .restaurant-image-wrapper img {
         height: 280px;
+      }
+      .hero-tagline {
+        letter-spacing: 3px;
       }
     }
   </style>
@@ -1685,7 +1712,7 @@
     </div>
   </header>
 
-  <!-- ============ HERO with VIDEO + PARTICLES ============ -->
+  <!-- ============ HERO (Centered Luxury Uppercase) ============ -->
   <section class="hero" id="home">
     <video class="hero-video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80">
       <source src="https://cdn.pixabay.com/video/2023/06/20/168035-844538727_large.mp4" type="video/mp4" />
@@ -1696,15 +1723,25 @@
     <div class="container hero-content">
       <div class="hero-badge">
         <i class="fas fa-star"></i> Boutique Hotel in Azrou
-        <i class="fas fa-circle" style="font-size:0.4rem;opacity:0.3;"></i>
-        <span style="font-weight:300;">Middle Atlas</span>
       </div>
-      <h1>Welcome to <span class="highlight">Amrous Dar</span></h1>
-      <p>Experience authentic Moroccan hospitality in the heart of the Middle Atlas Mountains. A tranquil retreat with modern comforts.</p>
+
+      <!-- CENTERED LUXURY UPPERCASE TITLE -->
+      <h1>AMROUS <span class="gold">DAR</span></h1>
+
+      <!-- DECORATIVE SEPARATOR -->
+      <div class="hero-separator">
+        <span></span>
+        <i class="fas fa-gem"></i>
+        <span></span>
+      </div>
+
+      <p class="hero-tagline">Boutique Hotel &amp; Retreat · Azrou, Middle Atlas</p>
+
       <div class="hero-buttons">
         <a href="#book" class="btn-primary"><i class="fas fa-calendar-check"></i> Check Availability</a>
         <a href="#contact" class="btn-outline">Contact Us</a>
       </div>
+
       <div class="hero-stats">
         <div class="hero-stat">
           <span class="number" data-count="13">0</span>
@@ -1754,7 +1791,7 @@
     </div>
   </section>
 
-  <!-- ============ ROOMS with 3D Tilt ============ -->
+  <!-- ============ ROOMS ============ -->
   <section class="section section-light" id="rooms">
     <div class="container">
       <h2 class="section-title reveal">Our <span class="gold">Rooms</span></h2>
@@ -1818,7 +1855,7 @@
     </div>
   </section>
 
-  <!-- ============ RESTAURANT with Video Play Button ============ -->
+  <!-- ============ RESTAURANT ============ -->
   <section class="section section-dark" id="restaurant">
     <div class="container">
       <div class="restaurant-grid">
@@ -1883,7 +1920,7 @@
     </div>
   </section>
 
-  <!-- ============ GALLERY with Lightbox ============ -->
+  <!-- ============ GALLERY ============ -->
   <section class="section section-dark" id="gallery">
     <div class="container">
       <h2 class="section-title reveal">Photo <span class="gold">Gallery</span></h2>
@@ -1931,14 +1968,13 @@
     </div>
   </section>
 
-  <!-- ============ TESTIMONIALS (Auto-scrolling) ============ -->
+  <!-- ============ TESTIMONIALS ============ -->
   <section class="section section-dark" id="testimonials">
     <div class="container">
       <h2 class="section-title reveal">Guest <span class="gold">Reviews</span></h2>
       <p class="section-subtitle reveal">What our guests say about their stay at Amrous Dar.</p>
       <div class="testimonials-wrapper">
         <div class="testimonials-track">
-          <!-- First set -->
           <div class="testimonial-card">
             <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
             <blockquote>"A hidden gem in Azrou! The staff was incredibly welcoming, the pool was perfect, and the breakfast was delicious."</blockquote>
@@ -1959,7 +1995,6 @@
             <blockquote>"We loved the authentic atmosphere and the delicious tagine. The pool was a refreshing treat after a day of hiking."</blockquote>
             <div class="author">Maria <span>– Spain</span></div>
           </div>
-          <!-- Duplicate for seamless loop -->
           <div class="testimonial-card">
             <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
             <blockquote>"A hidden gem in Azrou! The staff was incredibly welcoming, the pool was perfect, and the breakfast was delicious."</blockquote>
@@ -2052,7 +2087,7 @@
     </div>
   </section>
 
-  <!-- ============ CONTACT & MAP ============ -->
+  <!-- ============ CONTACT ============ -->
   <section class="section section-light" id="contact">
     <div class="container">
       <div class="contact-grid">
@@ -2164,7 +2199,7 @@
     <i class="fab fa-whatsapp"></i>
   </a>
 
-  <!-- ============ JAVASCRIPT (Full Dynamic Power) ============ -->
+  <!-- ============ JAVASCRIPT ============ -->
   <script>
     // ----- Custom Cursor Glow -----
     const cursorGlow = document.getElementById('cursorGlow');
@@ -2193,7 +2228,7 @@
       header.classList.toggle('scrolled', window.scrollY > 60);
     });
 
-    // ----- Scroll Reveal Animations (Intersection Observer) -----
+    // ----- Scroll Reveal Animations -----
     const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-rotate');
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -2293,7 +2328,6 @@
           p.update();
           p.draw();
         });
-        // Draw connecting lines
         for (let i = 0; i < particles.length; i++) {
           for (let j = i + 1; j < particles.length; j++) {
             const dx = particles[i].x - particles[j].x;
@@ -2337,7 +2371,7 @@
       });
     });
 
-    // ----- Gallery Lightbox (Full-screen) -----
+    // ----- Gallery Lightbox -----
     document.querySelectorAll('.gallery-item').forEach(item => {
       item.addEventListener('click', function() {
         const img = this.querySelector('img');
@@ -2358,7 +2392,6 @@
         overlay.appendChild(clone);
         document.body.appendChild(overlay);
         overlay.addEventListener('click', () => overlay.remove());
-        // Close with ESC
         document.addEventListener('keydown', function escHandler(e) {
           if (e.key === 'Escape') {
             overlay.remove();
@@ -2384,7 +2417,7 @@
       });
     });
 
-    // ----- Smooth Anchor Scroll with offset -----
+    // ----- Smooth Anchor Scroll -----
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
@@ -2398,7 +2431,7 @@
       });
     });
 
-    // ----- Parallax effect on hero (optional) -----
+    // ----- Parallax effect on hero video -----
     window.addEventListener('scroll', () => {
       const hero = document.querySelector('.hero');
       if (hero) {
@@ -2415,7 +2448,7 @@
       `© ${new Date().getFullYear()} Amrous Dar. All rights reserved.`;
 
     console.log('✨ Amrous Dar — Luxury Hotel Website ✨');
-    console.log('📌 Built with passion for Azrou, Morocco.');
+    console.log('📌 Centered uppercase luxury hero with premium typography.');
   </script>
 </body>
 </html>
