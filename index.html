@@ -1,2454 +1,1648 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Amrous Dar | Boutique Hotel Azrou – Luxury Redefined</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <style>
-    /* ---------- RESET & VARIABLES ---------- */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --gold: #d4af37;
-      --gold-light: #f2e5c7;
-      --gold-dark: #b8962e;
-      --gold-glow: rgba(212, 175, 55, 0.4);
-      --dark: #0a0a0a;
-      --dark-card: #141414;
-      --dark-card-hover: #1a1a1a;
-      --text-primary: #f5f0ea;
-      --text-secondary: #b8b0a8;
-      --glass-bg: rgba(255, 255, 255, 0.04);
-      --glass-border: rgba(255, 255, 255, 0.08);
-      --shadow-glow: 0 30px 80px rgba(0, 0, 0, 0.7);
-      --radius: 20px;
-      --radius-sm: 12px;
-      --transition: 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-      --transition-bounce: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--dark);
-      color: var(--text-primary);
-      line-height: 1.6;
-      overflow-x: hidden;
-      cursor: default;
-    }
-
-    ::selection {
-      background: var(--gold);
-      color: var(--dark);
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-    img {
-      display: block;
-      max-width: 100%;
-    }
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 30px;
-    }
-
-    /* ---------- SCROLLBAR ---------- */
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: var(--dark);
-    }
-    ::-webkit-scrollbar-thumb {
-      background: var(--gold);
-      border-radius: 10px;
-    }
-
-    /* ---------- CUSTOM CURSOR GLOW ---------- */
-    .cursor-glow {
-      position: fixed;
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(212, 175, 55, 0.06) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: width 0.3s, height 0.3s, opacity 0.3s;
-      mix-blend-mode: screen;
-    }
-
-    /* ---------- GLASS CARD ---------- */
-    .glass-card {
-      background: var(--glass-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--glass-border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-glow);
-      transition: var(--transition);
-    }
-
-    /* ---------- BUTTONS ---------- */
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-      color: var(--dark);
-      font-weight: 700;
-      padding: 18px 44px;
-      border-radius: 60px;
-      border: none;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: var(--transition-bounce);
-      box-shadow: 0 8px 40px rgba(212, 175, 55, 0.25);
-      letter-spacing: 0.5px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .btn-primary::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
-      transform: translateX(-100%);
-      transition: var(--transition);
-    }
-
-    .btn-primary:hover::after {
-      transform: translateX(0);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-6px) scale(1.03);
-      box-shadow: 0 16px 60px rgba(212, 175, 55, 0.5);
-    }
-
-    .btn-outline {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: transparent;
-      color: var(--text-primary);
-      font-weight: 500;
-      padding: 16px 36px;
-      border-radius: 60px;
-      border: 1.5px solid rgba(255, 255, 255, 0.2);
-      transition: var(--transition-bounce);
-      font-size: 1rem;
-      cursor: pointer;
-    }
-
-    .btn-outline:hover {
-      background: rgba(255, 255, 255, 0.05);
-      border-color: var(--gold);
-      color: var(--gold);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-    }
-
-    .btn-whatsapp {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: linear-gradient(135deg, #25d366, #1da851);
-      color: #fff;
-      font-weight: 600;
-      padding: 18px 40px;
-      border-radius: 60px;
-      border: none;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: var(--transition-bounce);
-      box-shadow: 0 8px 40px rgba(37, 211, 102, 0.25);
-    }
-
-    .btn-whatsapp:hover {
-      transform: translateY(-6px) scale(1.03);
-      box-shadow: 0 16px 60px rgba(37, 211, 102, 0.5);
-    }
-
-    /* ---------- HEADER ---------- */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      padding: 18px 0;
-      transition: var(--transition);
-      background: transparent;
-    }
-
-    header.scrolled {
-      background: rgba(10, 10, 10, 0.92);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      padding: 10px 0;
-    }
-
-    .nav-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: var(--gold);
-      letter-spacing: 1px;
-      text-shadow: 0 0 40px rgba(212, 175, 55, 0.15);
-    }
-    .logo span {
-      color: var(--text-primary);
-      font-weight: 300;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 36px;
-      list-style: none;
-      align-items: center;
-    }
-
-    .nav-links a {
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: var(--transition);
-      position: relative;
-      letter-spacing: 0.5px;
-    }
-
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -6px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--gold);
-      transition: var(--transition);
-      box-shadow: 0 0 10px var(--gold-glow);
-    }
-
-    .nav-links a:hover {
-      color: #fff;
-    }
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .nav-cta {
-      background: var(--gold);
-      color: var(--dark) !important;
-      padding: 10px 26px;
-      border-radius: 40px;
-      font-weight: 600 !important;
-      box-shadow: 0 4px 20px rgba(212, 175, 55, 0.2);
-    }
-    .nav-cta::after {
-      display: none !important;
-    }
-    .nav-cta:hover {
-      background: var(--gold-light) !important;
-      color: var(--dark) !important;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
-    }
-
-    .lang-switch {
-      display: flex;
-      gap: 4px;
-      margin-left: 12px;
-    }
-    .lang-switch button {
-      background: transparent;
-      border: none;
-      color: rgba(255, 255, 255, 0.4);
-      font-size: 0.7rem;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: var(--transition);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    .lang-switch button.active {
-      color: var(--gold);
-      background: rgba(212, 175, 55, 0.12);
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.05);
-    }
-    .lang-switch button:hover {
-      color: #fff;
-    }
-
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      z-index: 1001;
-    }
-    .hamburger span {
-      width: 30px;
-      height: 2px;
-      background: var(--text-primary);
-      transition: var(--transition);
-      border-radius: 4px;
-    }
-
-    /* ---------- HERO (VIDEO + CENTERED LUXURY) ---------- */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-      background: var(--dark);
-      text-align: center;
-    }
-
-    .hero-video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: brightness(0.35) saturate(0.9);
-      z-index: 0;
-    }
-
-    .hero-particles {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    .hero-overlay-gradient {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at center, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.7) 100%);
-      z-index: 1;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 40px 20px;
-      animation: fadeInUp 1s ease-out;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(212, 175, 55, 0.10);
-      backdrop-filter: blur(12px);
-      padding: 10px 28px;
-      border-radius: 40px;
-      font-size: 0.8rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--gold-light);
-      border: 1px solid rgba(212, 175, 55, 0.15);
-      margin-bottom: 28px;
-    }
-
-    .hero-badge i {
-      animation: pulseIcon 2s ease-in-out infinite;
-    }
-
-    @keyframes pulseIcon {
-      0%,
-      100% {
-        opacity: 1;
-      }
-      50% {
-        opacity: 0.3;
-      }
-    }
-
-    /* --- LUXURY CENTERED TITLE --- */
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(3.8rem, 10vw, 7rem);
-      font-weight: 700;
-      letter-spacing: clamp(6px, 1.2vw, 16px);
-      text-transform: uppercase;
-      line-height: 1.05;
-      margin-bottom: 4px;
-      color: var(--text-primary);
-      text-shadow: 0 4px 40px rgba(0, 0, 0, 0.4);
-    }
-
-    .hero h1 .gold {
-      background: linear-gradient(135deg, var(--gold), #f5d76e, var(--gold-dark));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      text-shadow: 0 0 60px rgba(212, 175, 55, 0.15);
-    }
-
-    /* --- DECORATIVE SEPARATOR --- */
-    .hero-separator {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 24px;
-      margin: 16px auto 22px;
-      max-width: 360px;
-    }
-
-    .hero-separator span {
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    }
-
-    .hero-separator i {
-      color: var(--gold);
-      font-size: 0.9rem;
-      opacity: 0.8;
-    }
-
-    /* --- TAGLINE --- */
-    .hero-tagline {
-      font-size: clamp(0.9rem, 1.2vw, 1.2rem);
-      letter-spacing: 6px;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.6);
-      font-weight: 300;
-      margin-bottom: 40px;
-      font-family: 'Inter', sans-serif;
-    }
-
-    /* --- BUTTONS & STATS (centered) --- */
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      justify-content: center;
-    }
-
-    .hero-stats {
-      display: flex;
-      justify-content: center;
-      gap: 56px;
-      margin-top: 56px;
-    }
-
-    .hero-stat {
-      text-align: center;
-    }
-
-    .hero-stat .number {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.8rem;
-      font-weight: 700;
-      color: var(--gold);
-      display: block;
-      line-height: 1;
-    }
-
-    .hero-stat .label {
-      font-size: 0.75rem;
-      color: rgba(255, 255, 255, 0.4);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-top: 4px;
-    }
-
-    /* ---------- SCROLL INDICATOR ---------- */
-    .scroll-indicator {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 2;
-      color: rgba(255, 255, 255, 0.3);
-      font-size: 0.7rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      animation: bounceDown 2.5s ease-in-out infinite;
-    }
-
-    .scroll-indicator i {
-      font-size: 1.4rem;
-    }
-
-    @keyframes bounceDown {
-      0%,
-      100% {
-        transform: translateX(-50%) translateY(0);
-        opacity: 0.3;
-      }
-      50% {
-        transform: translateX(-50%) translateY(10px);
-        opacity: 1;
-      }
-    }
-
-    /* ---------- SECTION COMMON ---------- */
-    .section {
-      padding: 120px 0;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .section-dark {
-      background: var(--dark);
-    }
-
-    .section-light {
-      background: #0f0f0f;
-      border-top: 1px solid rgba(255, 255, 255, 0.02);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.02);
-    }
-
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.4rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-      line-height: 1.1;
-    }
-
-    .section-title .gold {
-      color: var(--gold);
-      background: linear-gradient(135deg, var(--gold), #f5d76e);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .section-subtitle {
-      color: var(--text-secondary);
-      font-size: 1.1rem;
-      max-width: 600px;
-      margin-bottom: 56px;
-      line-height: 1.7;
-    }
-
-    .section-dark .section-title {
-      color: var(--text-primary);
-    }
-    .section-dark .section-subtitle {
-      color: rgba(255, 255, 255, 0.6);
-    }
-
-    /* ---------- REVEAL ANIMATIONS ---------- */
-    .reveal {
-      opacity: 0;
-      transform: translateY(60px) scale(0.96);
-      transition: opacity 0.9s cubic-bezier(0.23, 1, 0.32, 1),
-        transform 0.9s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-
-    .reveal-left {
-      opacity: 0;
-      transform: translateX(-70px) scale(0.95);
-      transition: opacity 0.9s cubic-bezier(0.23, 1, 0.32, 1),
-        transform 0.9s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-    .reveal-left.visible {
-      opacity: 1;
-      transform: translateX(0) scale(1);
-    }
-
-    .reveal-right {
-      opacity: 0;
-      transform: translateX(70px) scale(0.95);
-      transition: opacity 0.9s cubic-bezier(0.23, 1, 0.32, 1),
-        transform 0.9s cubic-bezier(0.23, 1, 0.32, 1);
-    }
-    .reveal-right.visible {
-      opacity: 1;
-      transform: translateX(0) scale(1);
-    }
-
-    /* ---------- ABOUT ---------- */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 70px;
-      align-items: center;
-    }
-
-    .about-image-wrapper {
-      position: relative;
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow-glow);
-    }
-
-    .about-image-wrapper::before {
-      content: '';
-      position: absolute;
-      inset: -3px;
-      border-radius: var(--radius);
-      background: linear-gradient(135deg, var(--gold), transparent, var(--gold));
-      background-size: 300% 300%;
-      animation: borderGlow 4s ease-in-out infinite;
-      z-index: -1;
-      opacity: 0.5;
-    }
-
-    @keyframes borderGlow {
-      0%,
-      100% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-    }
-
-    .about-image-wrapper img {
-      width: 100%;
-      height: 500px;
-      object-fit: cover;
-      transition: var(--transition);
-    }
-    .about-image-wrapper:hover img {
-      transform: scale(1.04);
-    }
-
-    .about-text h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.4rem;
-      margin-bottom: 16px;
-    }
-    .about-text h3 .gold {
-      color: var(--gold);
-    }
-    .about-text p {
-      color: var(--text-secondary);
-      margin-bottom: 16px;
-      line-height: 1.9;
-    }
-
-    .about-features {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px 24px;
-      margin-top: 28px;
-    }
-    .about-features li {
-      list-style: none;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      transition: var(--transition);
-    }
-    .about-features li:hover {
-      color: var(--text-primary);
-      transform: translateX(4px);
-    }
-    .about-features li i {
-      color: var(--gold);
-      width: 20px;
-      font-size: 1rem;
-    }
-
-    /* ---------- ROOMS ---------- */
-    .rooms-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 36px;
-    }
-
-    .room-card {
-      background: var(--dark-card);
-      border-radius: var(--radius);
-      overflow: hidden;
-      transition: var(--transition-bounce);
-      border: 1px solid rgba(255, 255, 255, 0.04);
-      position: relative;
-      transform-style: preserve-3d;
-      perspective: 800px;
-    }
-
-    .room-card:hover {
-      transform: translateY(-16px) scale(1.02);
-      border-color: var(--gold);
-      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
-    }
-
-    .room-card .card-inner {
-      transition: var(--transition);
-      transform-style: preserve-3d;
-    }
-
-    .room-card:hover .card-inner {
-      transform: rotateX(2deg) rotateY(2deg);
-    }
-
-    .room-card .badge-sold {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: var(--gold);
-      color: var(--dark);
-      font-weight: 700;
-      font-size: 0.7rem;
-      padding: 4px 16px;
-      border-radius: 30px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      z-index: 2;
-      box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
-    }
-
-    .room-card img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-      transition: var(--transition);
-    }
-    .room-card:hover img {
-      transform: scale(1.06);
-    }
-
-    .room-card-body {
-      padding: 30px;
-    }
-    .room-card-body h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.7rem;
-      margin-bottom: 4px;
-    }
-    .room-price {
-      color: var(--gold);
-      font-weight: 700;
-      font-size: 1.3rem;
-      margin-bottom: 10px;
-    }
-    .room-card-body p {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-      margin-bottom: 16px;
-      line-height: 1.7;
-    }
-    .room-amenities {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 22px;
-    }
-    .room-amenities span {
-      background: rgba(255, 255, 255, 0.04);
-      padding: 4px 16px;
-      border-radius: 30px;
-      font-size: 0.75rem;
-      color: var(--text-secondary);
-      border: 1px solid rgba(255, 255, 255, 0.04);
-      transition: var(--transition);
-    }
-    .room-amenities span:hover {
-      background: rgba(212, 175, 55, 0.08);
-      color: var(--gold);
-    }
-    .room-amenities span i {
-      margin-right: 6px;
-      color: var(--gold);
-    }
-
-    /* ---------- RESTAURANT ---------- */
-    .restaurant-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 70px;
-      align-items: center;
-    }
-
-    .restaurant-image-wrapper {
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow-glow);
-      position: relative;
-    }
-
-    .restaurant-image-wrapper img {
-      width: 100%;
-      height: 440px;
-      object-fit: cover;
-      transition: var(--transition);
-    }
-    .restaurant-image-wrapper:hover img {
-      transform: scale(1.04);
-    }
-
-    .restaurant-image-wrapper .play-btn {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80px;
-      height: 80px;
-      background: rgba(212, 175, 55, 0.9);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      color: var(--dark);
-      backdrop-filter: blur(8px);
-      transition: var(--transition-bounce);
-      cursor: pointer;
-      box-shadow: 0 0 60px rgba(212, 175, 55, 0.3);
-    }
-
-    .restaurant-image-wrapper .play-btn:hover {
-      transform: translate(-50%, -50%) scale(1.15);
-      box-shadow: 0 0 80px rgba(212, 175, 55, 0.5);
-    }
-
-    .restaurant-text h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.4rem;
-      margin-bottom: 12px;
-    }
-    .restaurant-text h3 .gold {
-      color: var(--gold);
-    }
-    .restaurant-text p {
-      color: var(--text-secondary);
-      margin-bottom: 16px;
-      line-height: 1.9;
-    }
-    .restaurant-hours {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 28px;
-      margin-top: 24px;
-    }
-    .restaurant-hours div {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--text-secondary);
-      transition: var(--transition);
-    }
-    .restaurant-hours div:hover {
-      color: var(--text-primary);
-    }
-    .restaurant-hours i {
-      color: var(--gold);
-      width: 24px;
-    }
-
-    /* ---------- ACTIVITIES ---------- */
-    .activities-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 30px;
-    }
-
-    .activity-item {
-      background: rgba(255, 255, 255, 0.02);
-      padding: 40px 24px;
-      border-radius: var(--radius);
-      text-align: center;
-      border: 1px solid rgba(255, 255, 255, 0.03);
-      transition: var(--transition-bounce);
-      cursor: default;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .activity-item::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at center, rgba(212, 175, 55, 0.05), transparent 70%);
-      opacity: 0;
-      transition: var(--transition);
-    }
-
-    .activity-item:hover::before {
-      opacity: 1;
-    }
-
-    .activity-item:hover {
-      transform: translateY(-12px) scale(1.02);
-      border-color: rgba(212, 175, 55, 0.2);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-    }
-
-    .activity-item i {
-      font-size: 3rem;
-      color: var(--gold);
-      margin-bottom: 16px;
-      display: inline-block;
-      transition: var(--transition-bounce);
-    }
-
-    .activity-item:hover i {
-      transform: scale(1.2) rotate(-5deg);
-      text-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
-    }
-
-    .activity-item h4 {
-      font-size: 1.2rem;
-      margin-bottom: 4px;
-    }
-    .activity-item p {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-    }
-
-    /* ---------- GALLERY ---------- */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
-    .gallery-grid .gallery-item {
-      position: relative;
-      border-radius: 16px;
-      overflow: hidden;
-      cursor: pointer;
-      transition: var(--transition-bounce);
-    }
-
-    .gallery-grid .gallery-item img {
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-      transition: var(--transition);
-    }
-
-    .gallery-grid .gallery-item:hover img {
-      transform: scale(1.08);
-    }
-
-    .gallery-grid .gallery-item:hover {
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-      transform: translateY(-6px);
-    }
-
-    .gallery-grid .gallery-item .overlay-icon {
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: var(--transition);
-      backdrop-filter: blur(4px);
-    }
-
-    .gallery-grid .gallery-item:hover .overlay-icon {
-      opacity: 1;
-    }
-
-    .gallery-grid .gallery-item .overlay-icon i {
-      color: #fff;
-      font-size: 2.4rem;
-      transform: scale(0.8);
-      transition: var(--transition-bounce);
-    }
-
-    .gallery-grid .gallery-item:hover .overlay-icon i {
-      transform: scale(1);
-    }
-
-    .gallery-grid .tall {
-      grid-row: span 2;
-    }
-    .gallery-grid .tall img {
-      height: 538px;
-    }
-
-    /* ---------- VIRTUAL TOUR ---------- */
-    .virtual-tour {
-      background: linear-gradient(135deg, #121212, #0a0a0a);
-      border-radius: var(--radius);
-      padding: 72px 48px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(212, 175, 55, 0.08);
-    }
-
-    .virtual-tour .ring {
-      position: absolute;
-      border-radius: 50%;
-      border: 1px solid rgba(212, 175, 55, 0.06);
-      animation: ringPulse 6s ease-in-out infinite;
-    }
-
-    .virtual-tour .ring:nth-child(1) {
-      width: 400px;
-      height: 400px;
-      top: -100px;
-      right: -100px;
-      animation-delay: 0s;
-    }
-    .virtual-tour .ring:nth-child(2) {
-      width: 600px;
-      height: 600px;
-      bottom: -200px;
-      left: -150px;
-      animation-delay: 2s;
-    }
-    .virtual-tour .ring:nth-child(3) {
-      width: 200px;
-      height: 200px;
-      top: 30%;
-      left: 20%;
-      animation-delay: 4s;
-    }
-
-    @keyframes ringPulse {
-      0%,
-      100% {
-        transform: scale(1);
-        opacity: 0.3;
-      }
-      50% {
-        transform: scale(1.2);
-        opacity: 0.8;
-      }
-    }
-
-    .virtual-tour h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.6rem;
-      color: #fff;
-      position: relative;
-      z-index: 1;
-    }
-
-    .virtual-tour h3 i {
-      color: var(--gold);
-      margin-right: 16px;
-    }
-
-    .virtual-tour p {
-      color: rgba(255, 255, 255, 0.6);
-      margin: 16px 0 32px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .virtual-tour .btn-primary {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* ---------- TESTIMONIALS ---------- */
-    .testimonials-wrapper {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .testimonials-track {
-      display: flex;
-      gap: 28px;
-      animation: scrollTestimonials 30s linear infinite;
-      width: max-content;
-    }
-
-    .testimonials-track:hover {
-      animation-play-state: paused;
-    }
-
-    @keyframes scrollTestimonials {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-50%);
-      }
-    }
-
-    .testimonial-card {
-      min-width: 340px;
-      max-width: 340px;
-      background: var(--dark-card);
-      padding: 30px;
-      border-radius: var(--radius);
-      border-left: 4px solid var(--gold);
-      transition: var(--transition);
-      flex-shrink: 0;
-    }
-
-    .testimonial-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-    }
-
-    .testimonial-card .stars {
-      color: var(--gold);
-      margin-bottom: 12px;
-      font-size: 0.9rem;
-    }
-
-    .testimonial-card blockquote {
-      font-style: italic;
-      color: var(--text-secondary);
-      margin-bottom: 14px;
-      font-size: 0.95rem;
-      line-height: 1.7;
-    }
-
-    .testimonial-card .author {
-      font-weight: 600;
-      color: var(--text-primary);
-    }
-    .testimonial-card .author span {
-      font-weight: 400;
-      color: var(--text-secondary);
-      font-size: 0.85rem;
-    }
-
-    /* ---------- BLOG ---------- */
-    .blog-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-    }
-
-    .blog-card {
-      background: var(--dark-card);
-      border-radius: var(--radius);
-      overflow: hidden;
-      transition: var(--transition-bounce);
-      border: 1px solid rgba(255, 255, 255, 0.03);
-    }
-
-    .blog-card:hover {
-      transform: translateY(-14px);
-      border-color: var(--gold);
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-    }
-
-    .blog-card img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      transition: var(--transition);
-    }
-    .blog-card:hover img {
-      transform: scale(1.05);
-    }
-
-    .blog-card-body {
-      padding: 26px 28px 30px;
-    }
-
-    .blog-card-body .blog-date {
-      font-size: 0.75rem;
-      color: var(--text-secondary);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .blog-card-body h4 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
-      margin: 8px 0 10px;
-      transition: var(--transition);
-    }
-
-    .blog-card:hover h4 {
-      color: var(--gold);
-    }
-
-    .blog-card-body p {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-      line-height: 1.7;
-    }
-
-    .blog-card-body .read-more {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 16px;
-      color: var(--gold);
-      font-weight: 600;
-      font-size: 0.85rem;
-      transition: var(--transition);
-    }
-
-    .blog-card-body .read-more:hover {
-      gap: 16px;
-    }
-
-    /* ---------- OFFERS ---------- */
-    .offers-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 30px;
-    }
-
-    .offer-card {
-      background: rgba(255, 255, 255, 0.02);
-      padding: 36px 24px;
-      border-radius: var(--radius);
-      text-align: center;
-      border: 1px solid rgba(255, 255, 255, 0.03);
-      transition: var(--transition-bounce);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .offer-card::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle at center, rgba(212, 175, 55, 0.03), transparent 60%);
-      opacity: 0;
-      transition: var(--transition);
-    }
-
-    .offer-card:hover::before {
-      opacity: 1;
-    }
-
-    .offer-card:hover {
-      transform: translateY(-10px) scale(1.02);
-      border-color: rgba(212, 175, 55, 0.15);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-    }
-
-    .offer-card .offer-icon {
-      font-size: 2.8rem;
-      color: var(--gold);
-      margin-bottom: 14px;
-      display: inline-block;
-      transition: var(--transition-bounce);
-    }
-
-    .offer-card:hover .offer-icon {
-      transform: scale(1.2) rotate(-8deg);
-    }
-
-    .offer-card h4 {
-      font-size: 1.2rem;
-      margin-bottom: 4px;
-    }
-    .offer-card p {
-      color: var(--text-secondary);
-      font-size: 0.9rem;
-    }
-
-    /* ---------- CONTACT ---------- */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 70px;
-    }
-
-    .contact-info h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.4rem;
-      margin-bottom: 12px;
-    }
-    .contact-info h3 .gold {
-      color: var(--gold);
-    }
-    .contact-info p {
-      color: var(--text-secondary);
-      margin-bottom: 28px;
-      line-height: 1.8;
-    }
-
-    .contact-details {
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      margin-bottom: 32px;
-    }
-    .contact-details li {
-      list-style: none;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      color: var(--text-secondary);
-      transition: var(--transition);
-    }
-    .contact-details li:hover {
-      color: var(--text-primary);
-      transform: translateX(4px);
-    }
-    .contact-details li i {
-      color: var(--gold);
-      width: 24px;
-      font-size: 1.2rem;
-    }
-
-    .contact-form input,
-    .contact-form textarea,
-    .contact-form select {
-      width: 100%;
-      padding: 18px 22px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: var(--radius-sm);
-      color: var(--text-primary);
-      font-size: 1rem;
-      transition: var(--transition);
-      font-family: inherit;
-      margin-bottom: 18px;
-    }
-
-    .contact-form input:focus,
-    .contact-form textarea:focus,
-    .contact-form select:focus {
-      outline: none;
-      border-color: var(--gold);
-      background: rgba(255, 255, 255, 0.06);
-      box-shadow: 0 0 30px rgba(212, 175, 55, 0.05);
-    }
-
-    .contact-form .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .contact-form textarea {
-      min-height: 150px;
-      resize: vertical;
-    }
-
-    .contact-form select option {
-      background: var(--dark);
-    }
-
-    .map-container {
-      margin-top: 56px;
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow-glow);
-      position: relative;
-    }
-
-    .map-container iframe {
-      width: 100%;
-      height: 420px;
-      border: 0;
-      display: block;
-      filter: grayscale(0.3) invert(0.05);
-    }
-
-    /* ---------- BOOK SECTION ---------- */
-    #book {
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    #book .section-subtitle {
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .book-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-      margin-top: 16px;
-    }
-
-    /* ---------- FOOTER ---------- */
-    footer {
-      background: #080808;
-      padding: 70px 0 30px;
-      border-top: 1px solid rgba(255, 255, 255, 0.03);
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 50px;
-      margin-bottom: 44px;
-    }
-
-    .footer-brand .logo {
-      font-size: 2.2rem;
-    }
-
-    .footer-brand p {
-      color: var(--text-secondary);
-      max-width: 340px;
-      margin: 14px 0 24px;
-      line-height: 1.7;
-    }
-
-    .footer-social {
-      display: flex;
-      gap: 14px;
-    }
-    .footer-social a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.04);
-      color: var(--text-secondary);
-      transition: var(--transition-bounce);
-      font-size: 1.2rem;
-    }
-    .footer-social a:hover {
-      background: var(--gold);
-      color: var(--dark);
-      transform: translateY(-6px) rotate(-5deg);
-      box-shadow: 0 12px 30px rgba(212, 175, 55, 0.2);
-    }
-
-    .footer-col h4 {
-      font-size: 1.1rem;
-      margin-bottom: 18px;
-      color: var(--text-primary);
-    }
-
-    .footer-col ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .footer-col ul a {
-      color: var(--text-secondary);
-      transition: var(--transition);
-      font-size: 0.95rem;
-    }
-    .footer-col ul a:hover {
-      color: var(--gold);
-      transform: translateX(6px);
-    }
-
-    .footer-bottom {
-      border-top: 1px solid rgba(255, 255, 255, 0.03);
-      padding-top: 26px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 14px;
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-    }
-
-    .footer-bottom i {
-      color: var(--gold);
-    }
-
-    /* ---------- WHATSAPP FLOAT ---------- */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 32px;
-      right: 32px;
-      z-index: 999;
-      background: linear-gradient(135deg, #25d366, #1da851);
-      color: #fff;
-      width: 72px;
-      height: 72px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.6rem;
-      box-shadow: 0 8px 40px rgba(37, 211, 102, 0.35);
-      transition: var(--transition-bounce);
-      animation: pulseWhatsApp 2.8s ease-in-out infinite;
-    }
-
-    .whatsapp-float:hover {
-      transform: scale(1.1) rotate(-5deg);
-      box-shadow: 0 16px 60px rgba(37, 211, 102, 0.55);
-    }
-
-    @keyframes pulseWhatsApp {
-      0%,
-      100% {
-        box-shadow: 0 8px 40px rgba(37, 211, 102, 0.35);
-      }
-      50% {
-        box-shadow: 0 8px 60px rgba(37, 211, 102, 0.65);
-      }
-    }
-
-    /* ---------- RESPONSIVE ---------- */
-    @media (max-width: 1024px) {
-      .about-grid,
-      .restaurant-grid,
-      .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 50px;
-      }
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-      .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .gallery-grid .tall {
-        height: 260px;
-        grid-row: auto;
-      }
-      .gallery-grid .tall img {
-        height: 260px;
-      }
-      .section-title {
-        font-size: 2.8rem;
-      }
-      .hero-stats {
-        gap: 36px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .nav-links {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        background: rgba(10, 10, 10, 0.98);
-        backdrop-filter: blur(24px);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 30px;
-        display: none;
-        z-index: 999;
-        padding: 40px;
-      }
-      .nav-links.open {
-        display: flex;
-      }
-      .hamburger {
-        display: flex;
-      }
-      .hamburger.active span:nth-child(1) {
-        transform: rotate(45deg) translate(6px, 6px);
-      }
-      .hamburger.active span:nth-child(2) {
-        opacity: 0;
-      }
-      .hamburger.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(6px, -6px);
-      }
-
-      .hero-stats {
-        gap: 24px;
-        flex-wrap: wrap;
-      }
-      .hero-stat .number {
-        font-size: 2.2rem;
-      }
-
-      .section-title {
-        font-size: 2.2rem;
-      }
-      .about-features {
-        grid-template-columns: 1fr;
-      }
-      .rooms-grid {
-        grid-template-columns: 1fr;
-      }
-      .contact-form .form-row {
-        grid-template-columns: 1fr;
-      }
-      .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 36px;
-      }
-      .testimonial-card {
-        min-width: 280px;
-        max-width: 280px;
-      }
-      .virtual-tour {
-        padding: 44px 24px;
-      }
-      .virtual-tour h3 {
-        font-size: 1.8rem;
-      }
-      .gallery-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-      .section {
-        padding: 80px 0;
-      }
-      .scroll-indicator {
-        display: none;
-      }
-      .hero-separator {
-        max-width: 240px;
-        gap: 16px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero h1 {
-        font-size: clamp(2.8rem, 12vw, 3.8rem);
-        letter-spacing: 4px;
-      }
-      .btn-primary,
-      .btn-outline,
-      .btn-whatsapp {
-        padding: 14px 24px;
-        font-size: 0.85rem;
-        width: 100%;
-        justify-content: center;
-      }
-      .hero-buttons {
-        flex-direction: column;
-        width: 100%;
-      }
-      .container {
-        padding: 0 16px;
-      }
-      .gallery-grid {
-        grid-template-columns: 1fr;
-      }
-      .gallery-grid .gallery-item img {
-        height: 200px;
-      }
-      .room-card img {
-        height: 200px;
-      }
-      .about-image-wrapper img {
-        height: 300px;
-      }
-      .restaurant-image-wrapper img {
-        height: 280px;
-      }
-      .hero-tagline {
-        letter-spacing: 3px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amrous‑Dar · Avant‑garde hospitality</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+    <style>
+        /* ── ROOT ── revolutionary brutalist-minimalist aesthetic */
+        :root {
+            --bg: #0B0B0B;
+            --bg-card: #111111;
+            --text: #F0EDE8;
+            --text-muted: rgba(255, 255, 255, 0.4);
+            --text-secondary: rgba(255, 255, 255, 0.6);
+            --gold: #D4AF37;
+            --gold-dim: rgba(212, 175, 55, 0.15);
+            --border: rgba(255, 255, 255, 0.04);
+            --font-display: 'DM Serif Display', serif;
+            --font-body: 'Space Grotesk', sans-serif;
+            --transition: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            --radius: 16px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background: var(--bg);
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-weight: 300;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        ::selection {
+            background: var(--gold);
+            color: #000;
+        }
+
+        ::-webkit-scrollbar {
+            width: 2px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 1px;
+        }
+
+        /* ── custom cursor ── ultra-minimal */
+        .cursor {
+            position: fixed;
+            pointer-events: none;
+            z-index: 99999;
+            width: 8px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.25s, height 0.25s, background 0.3s;
+            will-change: transform;
+            mix-blend-mode: difference;
+        }
+
+        .cursor.active {
+            width: 40px;
+            height: 40px;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid var(--gold);
+            backdrop-filter: blur(2px);
+        }
+
+        /* ── loader ── abstract */
+        #loader {
+            position: fixed;
+            inset: 0;
+            z-index: 999999;
+            background: var(--bg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 1.2s ease, visibility 1.2s ease;
+        }
+
+        #loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        #loader .bar {
+            width: 40px;
+            height: 2px;
+            background: var(--gold);
+            animation: loadBar 1.8s ease-in-out infinite;
+        }
+
+        @keyframes loadBar {
+            0% {
+                transform: scaleX(0);
+                transform-origin: left;
+            }
+            50% {
+                transform: scaleX(1);
+                transform-origin: left;
+            }
+            50.1% {
+                transform-origin: right;
+            }
+            100% {
+                transform: scaleX(0);
+                transform-origin: right;
+            }
+        }
+
+        #loader .label {
+            margin-top: 1.2rem;
+            font-size: 0.55rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        /* ── HEADER ── */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.8rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            mix-blend-mode: difference;
+            pointer-events: none;
+        }
+
+        header * {
+            pointer-events: auto;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            letter-spacing: 0.15em;
+            color: var(--text);
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .logo:hover {
+            opacity: 1;
+        }
+
+        .logo em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            font-size: 0.55rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--text);
+            text-decoration: none;
+            opacity: 0.4;
+            transition: opacity 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            opacity: 1;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.4s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .nav-reserve {
+            background: var(--gold);
+            color: #000 !important;
+            padding: 0.4rem 1.6rem;
+            border-radius: 40px;
+            font-weight: 500;
+            opacity: 1 !important;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .nav-reserve:hover {
+            transform: scale(1.04);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .nav-reserve::after {
+            display: none !important;
+        }
+
+        /* ── mobile toggle ── */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+
+        .menu-toggle span {
+            width: 24px;
+            height: 1.5px;
+            background: var(--text);
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* ── mobile menu ── */
+        .mobile-menu {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: var(--bg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            transform: translateY(-100%);
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 2rem;
+        }
+
+        .mobile-menu.open {
+            transform: translateY(0);
+        }
+
+        .mobile-menu a {
+            font-family: var(--font-display);
+            font-size: 2.4rem;
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--gold);
+        }
+
+        .mobile-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.8rem;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: opacity 0.3s;
+        }
+
+        .mobile-close:hover {
+            opacity: 1;
+        }
+
+        /* ── HERO ── fullscreen cinematic (IMAGE version) ── */
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: var(--bg);
+        }
+
+        .hero-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0;
+            transition: opacity 2s ease;
+            filter: brightness(0.4) saturate(0.9) contrast(1.1);
+        }
+
+        .hero-image.loaded {
+            opacity: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            background: radial-gradient(circle at 50% 50%, rgba(11, 11, 11, 0.1) 0%, rgba(11, 11, 11, 0.6) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            padding: 0 2rem;
+            animation: fadeIn 1.2s ease 0.3s both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content .badge {
+            font-size: 0.45rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 1.8rem;
+            font-weight: 400;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-display);
+            font-size: clamp(4.5rem, 14vw, 10rem);
+            font-weight: 400;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            color: var(--text);
+            margin-bottom: 0.6rem;
+        }
+
+        .hero-content h1 em {
+            font-style: italic;
+            color: var(--gold);
+            display: inline-block;
+            position: relative;
+        }
+
+        .hero-content h1 em::after {
+            content: '';
+            position: absolute;
+            bottom: 6px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.8s ease 0.6s;
+        }
+
+        .hero-content h1 em:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .hero-content .sub {
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 1.2rem;
+            font-weight: 300;
+        }
+
+        .hero-content .tagline {
+            font-family: var(--font-display);
+            font-style: italic;
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 2.4rem;
+            font-weight: 300;
+        }
+
+        .hero-content .ctas {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            color: #000;
+            border: none;
+            padding: 0.7rem 2.4rem;
+            border-radius: 40px;
+            font-family: var(--font-body);
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-gold:hover {
+            transform: scale(1.04);
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0.7rem 2.4rem;
+            border-radius: 40px;
+            font-family: var(--font-body);
+            font-size: 0.65rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+            transition: border-color 0.3s, color 0.3s, transform 0.3s;
+            display: inline-block;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            transform: scale(1.04);
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            font-size: 0.45rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            animation: floatDown 2.4s ease-in-out infinite;
+            cursor: default;
+        }
+
+        @keyframes floatDown {
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+                opacity: 0.3;
+            }
+            50% {
+                transform: translateX(-50%) translateY(8px);
+                opacity: 1;
+            }
+        }
+
+        /* ── floating booking bar ── */
+        .floating-booking {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            background: rgba(11, 11, 11, 0.85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 60px;
+            padding: 0.6rem 1.2rem 0.6rem 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.8rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+            transition: transform 0.4s ease, opacity 0.4s ease;
+        }
+
+        .floating-booking .field {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .floating-booking .field label {
+            font-size: 0.4rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .floating-booking .field input,
+        .floating-booking .field select {
+            background: transparent;
+            border: none;
+            color: var(--text);
+            font-family: var(--font-body);
+            font-size: 0.7rem;
+            font-weight: 300;
+            padding: 2px 0;
+            outline: none;
+            width: 100px;
+        }
+
+        .floating-booking .field input::-webkit-calendar-picker-indicator {
+            filter: invert(1);
+            opacity: 0.3;
+            cursor: pointer;
+        }
+
+        .floating-booking .field select {
+            cursor: pointer;
+            appearance: none;
+        }
+
+        .floating-booking .field select option {
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        .floating-booking .btn-gold {
+            padding: 0.5rem 1.8rem;
+            font-size: 0.55rem;
+            border-radius: 40px;
+        }
+
+        /* ── section common ── */
+        .section {
+            padding: 6rem 2rem;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 4vw, 3.4rem);
+            font-weight: 400;
+            margin-bottom: 0.8rem;
+        }
+
+        .section-title .gold {
+            color: var(--gold);
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            max-width: 600px;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+        }
+
+        .section-divider {
+            width: 60px;
+            height: 1px;
+            background: var(--gold);
+            margin: 1.2rem 0 2rem;
+            opacity: 0.3;
+        }
+
+        /* ── story / about ── */
+        #story {
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        #story .container {
+            max-width: 800px;
+        }
+
+        #story p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 1.2rem;
+        }
+
+        /* ── rooms ── */
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .room-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .room-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(212, 175, 55, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .room-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .room-card-body {
+            padding: 1.8rem;
+        }
+
+        .room-card-body h3 {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-bottom: 0.2rem;
+        }
+
+        .room-price {
+            color: var(--gold);
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .room-card-body p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .room-amenities {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem 0.8rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .room-amenities span {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.03);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .room-amenities span i {
+            margin-right: 0.3rem;
+            color: var(--gold);
+        }
+
+        .room-card .btn-gold {
+            width: 100%;
+            text-align: center;
+            padding: 0.6rem;
+            font-size: 0.55rem;
+        }
+
+        /* ── dining ── */
+        .dining-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .dining-image {
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: var(--bg-card);
+        }
+
+        .dining-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .dining-image:hover img {
+            transform: scale(1.03);
+        }
+
+        .dining-text h3 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .dining-text p {
+            color: var(--text-secondary);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .dining-hours {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .dining-hours div {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .dining-hours i {
+            color: var(--gold);
+            width: 20px;
+        }
+
+        /* ── gallery ── */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            border-radius: var(--radius);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+        }
+
+        .gallery-grid img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .gallery-grid .tall {
+            grid-row: span 2;
+            height: 532px;
+        }
+
+        /* ── testimonials ── */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .testimonial-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem;
+            transition: border-color 0.3s;
+        }
+
+        .testimonial-card:hover {
+            border-color: rgba(212, 175, 55, 0.15);
+        }
+
+        .testimonial-card .stars {
+            color: var(--gold);
+            font-size: 0.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .testimonial-card blockquote {
+            font-style: italic;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 0.8rem;
+        }
+
+        .testimonial-card .author {
+            font-weight: 400;
+            color: var(--text);
+        }
+
+        .testimonial-card .author span {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* ── contact ── */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-details {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin: 1.5rem 0 2rem;
+        }
+
+        .contact-details li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-details li i {
+            color: var(--gold);
+            width: 24px;
+        }
+
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            color: var(--text);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            transition: border-color 0.3s;
+            margin-bottom: 1rem;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .contact-form .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .contact-form textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .map-container {
+            margin-top: 4rem;
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 360px;
+            border: 0;
+            display: block;
+            filter: grayscale(0.3) invert(0.05);
+        }
+
+        /* ── footer ── */
+        footer {
+            background: var(--bg);
+            border-top: 1px solid var(--border);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .footer-brand .logo {
+            font-size: 1.4rem;
+        }
+
+        .footer-brand p {
+            color: var(--text-secondary);
+            max-width: 320px;
+            margin: 1rem 0 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+            color: var(--text-secondary);
+            transition: background 0.3s, color 0.3s, transform 0.3s;
+            text-decoration: none;
+        }
+
+        .footer-social a:hover {
+            background: var(--gold);
+            color: #000;
+            transform: translateY(-4px);
+        }
+
+        .footer-col h4 {
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .footer-col ul a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-col ul a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            max-width: 1280px;
+            margin: 2rem auto 0;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .footer-bottom .heart {
+            color: var(--gold);
+        }
+
+        /* ── modal ── */
+        #bookingModal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(20px);
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal-content {
+            background: var(--bg);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 20px;
+            padding: 3rem 2.5rem;
+            max-width: 480px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: var(--text);
+        }
+
+        .modal-content h3 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .modal-content p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 2rem;
+        }
+
+        .modal-content form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            text-align: left;
+        }
+
+        .modal-content form input {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            color: var(--text);
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            transition: border-color 0.3s;
+        }
+
+        .modal-content form input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .modal-content form .btn-gold {
+            width: 100%;
+            padding: 0.9rem;
+            font-size: 0.8rem;
+            margin-top: 0.4rem;
+        }
+
+        /* ── responsive ── */
+        @media (max-width: 1024px) {
+            header {
+                padding: 1.4rem 2rem;
+            }
+            nav {
+                gap: 1.8rem;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .gallery-grid .tall {
+                height: 260px;
+                grid-row: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 1.2rem 1.5rem;
+            }
+            nav {
+                display: none;
+            }
+            .menu-toggle {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: clamp(3.2rem, 12vw, 5rem);
+            }
+            .hero-content .tagline {
+                font-size: 1rem;
+            }
+
+            .floating-booking {
+                bottom: 1rem;
+                padding: 0.5rem 1rem 0.5rem 1.2rem;
+                gap: 1rem;
+                border-radius: 40px;
+                flex-wrap: wrap;
+                justify-content: center;
+                width: calc(100% - 2rem);
+                max-width: 500px;
+            }
+            .floating-booking .field input,
+            .floating-booking .field select {
+                width: 70px;
+                font-size: 0.6rem;
+            }
+            .floating-booking .btn-gold {
+                padding: 0.4rem 1.2rem;
+                font-size: 0.5rem;
+            }
+
+            .dining-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .section {
+                padding: 4rem 1.5rem;
+            }
+            .hero-scroll {
+                bottom: 5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: clamp(2.6rem, 10vw, 3.6rem);
+            }
+            .hero-content .badge {
+                font-size: 0.35rem;
+            }
+            .hero-content .sub {
+                font-size: 0.55rem;
+            }
+            .hero-content .tagline {
+                font-size: 0.85rem;
+            }
+            .btn-gold,
+            .btn-outline {
+                padding: 0.5rem 1.6rem;
+                font-size: 0.55rem;
+            }
+
+            .floating-booking {
+                gap: 0.6rem;
+                padding: 0.4rem 0.8rem;
+            }
+            .floating-booking .field input,
+            .floating-booking .field select {
+                width: 56px;
+                font-size: 0.5rem;
+            }
+            .floating-booking .field label {
+                font-size: 0.35rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .contact-form .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- ============ CUSTOM CURSOR GLOW ============ -->
-  <div class="cursor-glow" id="cursorGlow"></div>
-
-  <!-- ============ HEADER ============ -->
-  <header id="header">
-    <div class="container nav-container">
-      <a href="#" class="logo">Amrous <span>Dar</span></a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#about">About</a></li>
-        <li><a href="#rooms">Rooms</a></li>
-        <li><a href="#restaurant">Dining</a></li>
-        <li><a href="#activities">Activities</a></li>
-        <li><a href="#gallery">Gallery</a></li>
-        <li><a href="#offers">Offers</a></li>
-        <li><a href="#blog">Blog</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#book" class="nav-cta">Book Now</a></li>
-        <li class="lang-switch">
-          <button class="active" data-lang="en">EN</button>
-          <button data-lang="fr">FR</button>
-          <button data-lang="ar">AR</button>
-        </li>
-      </ul>
-      <div class="hamburger" id="hamburger">
-        <span></span><span></span><span></span>
-      </div>
-    </div>
-  </header>
-
-  <!-- ============ HERO (Centered Luxury Uppercase) ============ -->
-  <section class="hero" id="home">
-    <video class="hero-video" autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80">
-      <source src="https://cdn.pixabay.com/video/2023/06/20/168035-844538727_large.mp4" type="video/mp4" />
-    </video>
-    <div class="hero-overlay-gradient"></div>
-    <canvas class="hero-particles" id="particlesCanvas"></canvas>
-
-    <div class="container hero-content">
-      <div class="hero-badge">
-        <i class="fas fa-star"></i> Boutique Hotel in Azrou
-      </div>
-
-      <!-- CENTERED LUXURY UPPERCASE TITLE -->
-      <h1>AMROUS <span class="gold">DAR</span></h1>
-
-      <!-- DECORATIVE SEPARATOR -->
-      <div class="hero-separator">
-        <span></span>
-        <i class="fas fa-gem"></i>
-        <span></span>
-      </div>
-
-      <p class="hero-tagline">Boutique Hotel &amp; Retreat · Azrou, Middle Atlas</p>
-
-      <div class="hero-buttons">
-        <a href="#book" class="btn-primary"><i class="fas fa-calendar-check"></i> Check Availability</a>
-        <a href="#contact" class="btn-outline">Contact Us</a>
-      </div>
-
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <span class="number" data-count="13">0</span>
-          <span class="label">Rooms</span>
-        </div>
-        <div class="hero-stat">
-          <span class="number" data-count="98">0</span>
-          <span class="label">Happy Guests</span>
-        </div>
-        <div class="hero-stat">
-          <span class="number" data-count="4.8">0</span>
-          <span class="label">Rating</span>
-        </div>
-      </div>
+    <!-- ── LOADER ── -->
+    <div id="loader">
+        <div class="bar"></div>
+        <div class="label">Awakening</div>
     </div>
 
-    <div class="scroll-indicator">
-      <span>Scroll</span>
-      <i class="fas fa-chevron-down"></i>
-    </div>
-  </section>
+    <!-- ── CUSTOM CURSOR ── -->
+    <div class="cursor" id="cursor"></div>
 
-  <!-- ============ ABOUT ============ -->
-  <section class="section section-dark" id="about">
-    <div class="container">
-      <div class="about-grid">
-        <div class="about-image-wrapper reveal-left">
-          <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Amrous Dar Exterior" loading="lazy" />
-        </div>
-        <div class="about-text reveal-right">
-          <span class="hero-badge" style="background:rgba(212,175,55,0.08);color:var(--gold);border-color:rgba(212,175,55,0.12);margin-bottom:16px;display:inline-flex;">About Us</span>
-          <h3>Your Home in the <span class="gold">Middle Atlas</span></h3>
-          <p>Nestled along the scenic Route de Meknès, just 6 km from the heart of Azrou, Amrous Dar offers a peaceful escape surrounded by nature. Our 2-star boutique hotel combines traditional Moroccan charm with modern amenities.</p>
-          <p>Whether you're exploring the cedar forests, visiting nearby Ifrane, or simply unwinding by our seasonal outdoor pool, we ensure every stay is memorable.</p>
-          <ul class="about-features">
-            <li><i class="fas fa-check-circle"></i> 13 Comfortable Rooms</li>
-            <li><i class="fas fa-check-circle"></i> Seasonal Outdoor Pool</li>
-            <li><i class="fas fa-check-circle"></i> Free Private Parking</li>
-            <li><i class="fas fa-check-circle"></i> Garden &amp; Terrace</li>
-            <li><i class="fas fa-check-circle"></i> Free Wi-Fi</li>
-            <li><i class="fas fa-check-circle"></i> 24-Hour Front Desk</li>
-            <li><i class="fas fa-check-circle"></i> Air Conditioning</li>
-            <li><i class="fas fa-check-circle"></i> Restaurant On-Site</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
+    <!-- ── HEADER ── -->
+    <header>
+        <a href="#home" class="logo">amrous<em>‑dar</em></a>
+        <nav>
+            <a href="#story">Story</a>
+            <a href="#rooms">Rooms</a>
+            <a href="#dining">Dining</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
+            <a href="#" class="nav-reserve" onclick="openModal();return false;">Reserve</a>
+        </nav>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
 
-  <!-- ============ ROOMS ============ -->
-  <section class="section section-light" id="rooms">
-    <div class="container">
-      <h2 class="section-title reveal">Our <span class="gold">Rooms</span></h2>
-      <p class="section-subtitle reveal">Comfortable and thoughtfully designed spaces for every traveler.</p>
-      <div class="rooms-grid">
-        <div class="room-card reveal" style="transition-delay:0.05s;" data-tilt>
-          <div class="card-inner">
-            <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Standard Room" loading="lazy" />
-            <div class="room-card-body">
-              <h3>Standard Room</h3>
-              <div class="room-price">From 450 MAD / night</div>
-              <p>Cozy room with garden views, air conditioning, private bathroom, and free Wi-Fi.</p>
-              <div class="room-amenities">
-                <span><i class="fas fa-wifi"></i> Wi-Fi</span>
-                <span><i class="fas fa-snowflake"></i> A/C</span>
-                <span><i class="fas fa-shower"></i> Bath</span>
-                <span><i class="fas fa-tv"></i> TV</span>
-              </div>
-              <a href="#book" class="btn-primary" style="padding:12px 28px;font-size:0.85rem;width:100%;justify-content:center;">Book Now</a>
+    <!-- ── MOBILE MENU ── -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-close" onclick="toggleMenu()">✕</button>
+        <a href="#story" onclick="toggleMenu()">Story</a>
+        <a href="#rooms" onclick="toggleMenu()">Rooms</a>
+        <a href="#dining" onclick="toggleMenu()">Dining</a>
+        <a href="#gallery" onclick="toggleMenu()">Gallery</a>
+        <a href="#contact" onclick="toggleMenu()">Contact</a>
+        <a href="#" onclick="openModal();toggleMenu();return false;" style="background:var(--gold);color:#000;padding:0.5rem 2rem;border-radius:40px;font-size:1rem;text-decoration:none;">Reserve</a>
+    </div>
+
+    <!-- ── HERO ── (IMAGE VERSION) ── -->
+    <section class="hero" id="home">
+        <img class="hero-image" id="heroImage" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1800&q=80" alt="Amrous Dar luxury hotel in Azrou Morocco" loading="eager" />
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="badge">Azrou · Middle Atlas</div>
+            <h1>amrous<em>‑dar</em></h1>
+            <div class="sub">A sanctuary in the cedar mountains</div>
+            <div class="tagline">"Where timeless luxury meets Moroccan soul"</div>
+            <div class="ctas">
+                <button class="btn-gold" onclick="openModal()">Reserve your stay</button>
+                <a href="#story" class="btn-outline">Discover</a>
             </div>
-          </div>
         </div>
-        <div class="room-card reveal" style="transition-delay:0.1s;" data-tilt>
-          <div class="card-inner">
-            <div class="badge-sold">Popular</div>
-            <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Superior Room" loading="lazy" />
-            <div class="room-card-body">
-              <h3>Superior Room</h3>
-              <div class="room-price">From 650 MAD / night</div>
-              <p>Spacious room with a private balcony, pool views, and enhanced amenities.</p>
-              <div class="room-amenities">
-                <span><i class="fas fa-wifi"></i> Wi-Fi</span>
-                <span><i class="fas fa-snowflake"></i> A/C</span>
-                <span><i class="fas fa-shower"></i> Bath</span>
-                <span><i class="fas fa-tv"></i> TV</span>
-                <span><i class="fas fa-balcony"></i> Balcony</span>
-              </div>
-              <a href="#book" class="btn-primary" style="padding:12px 28px;font-size:0.85rem;width:100%;justify-content:center;">Book Now</a>
-            </div>
-          </div>
-        </div>
-        <div class="room-card reveal" style="transition-delay:0.15s;" data-tilt>
-          <div class="card-inner">
-            <img src="https://images.unsplash.com/photo-1631049552057-403cdb8f0658?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Family Suite" loading="lazy" />
-            <div class="room-card-body">
-              <h3>Family Suite</h3>
-              <div class="room-price">From 850 MAD / night</div>
-              <p>Perfect for families or groups, featuring two connected rooms and mountain views.</p>
-              <div class="room-amenities">
-                <span><i class="fas fa-wifi"></i> Wi-Fi</span>
-                <span><i class="fas fa-snowflake"></i> A/C</span>
-                <span><i class="fas fa-shower"></i> Bath</span>
-                <span><i class="fas fa-tv"></i> TV</span>
-                <span><i class="fas fa-users"></i> 2 Rooms</span>
-              </div>
-              <a href="#book" class="btn-primary" style="padding:12px 28px;font-size:0.85rem;width:100%;justify-content:center;">Book Now</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+        <div class="hero-scroll">scroll</div>
+    </section>
 
-  <!-- ============ RESTAURANT ============ -->
-  <section class="section section-dark" id="restaurant">
-    <div class="container">
-      <div class="restaurant-grid">
-        <div class="restaurant-text reveal-left">
-          <span class="hero-badge" style="background:rgba(212,175,55,0.08);color:var(--gold);border-color:rgba(212,175,55,0.12);margin-bottom:16px;display:inline-flex;">Dining</span>
-          <h3>Authentic <span class="gold">Moroccan Cuisine</span></h3>
-          <p>Our on-site restaurant serves traditional Moroccan dishes prepared with fresh, local ingredients. From fragrant tagines to fluffy couscous, every meal is a celebration of flavor.</p>
-          <p>Start your day with a continental or halal breakfast, and return in the evening for a memorable dinner under the stars on our terrace.</p>
-          <div class="restaurant-hours">
-            <div><i class="fas fa-utensils"></i> Breakfast: 7:00 – 10:00</div>
-            <div><i class="fas fa-utensils"></i> Dinner: 19:00 – 22:00</div>
-            <div><i class="fas fa-mug-saucer"></i> Terrace &amp; Lounge: All day</div>
-          </div>
+    <!-- ── FLOATING BOOKING BAR ── -->
+    <div class="floating-booking" id="floatingBooking">
+        <div class="field">
+            <label>check‑in</label>
+            <input type="date" id="checkinDate" />
         </div>
-        <div class="restaurant-image-wrapper reveal-right">
-          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Restaurant at Amrous Dar" loading="lazy" />
-          <div class="play-btn" onclick="alert('🎥 Welcome to Amrous Dar dining experience!')">
-            <i class="fas fa-play"></i>
-          </div>
+        <div class="field">
+            <label>check‑out</label>
+            <input type="date" id="checkoutDate" />
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ ACTIVITIES ============ -->
-  <section class="section section-light" id="activities">
-    <div class="container">
-      <h2 class="section-title reveal">Activities &amp; <span class="gold">Excursions</span></h2>
-      <p class="section-subtitle reveal">Discover the beauty of Azrou and the Middle Atlas region.</p>
-      <div class="activities-grid">
-        <div class="activity-item reveal" style="transition-delay:0.05s;">
-          <i class="fas fa-tree"></i>
-          <h4>Cedar Forest Trek</h4>
-          <p>Explore the famous cedar forests home to Barbary macaques.</p>
-        </div>
-        <div class="activity-item reveal" style="transition-delay:0.1s;">
-          <i class="fas fa-mountain"></i>
-          <h4>Atlas Mountains</h4>
-          <p>Guided hiking tours with breathtaking panoramic views.</p>
-        </div>
-        <div class="activity-item reveal" style="transition-delay:0.15s;">
-          <i class="fas fa-city"></i>
-          <h4>Azrou Medina</h4>
-          <p>Wander through the vibrant souks and historic streets.</p>
-        </div>
-        <div class="activity-item reveal" style="transition-delay:0.2s;">
-          <i class="fas fa-water"></i>
-          <h4>Ifrane Lake</h4>
-          <p>Visit the serene lake just 24 km from the hotel.</p>
-        </div>
-        <div class="activity-item reveal" style="transition-delay:0.25s;">
-          <i class="fas fa-bicycle"></i>
-          <h4>Mountain Biking</h4>
-          <p>Rent a bike and explore scenic trails around Azrou.</p>
-        </div>
-        <div class="activity-item reveal" style="transition-delay:0.3s;">
-          <i class="fas fa-camera"></i>
-          <h4>Photography Tours</h4>
-          <p>Capture the stunning landscapes of the Middle Atlas.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ GALLERY ============ -->
-  <section class="section section-dark" id="gallery">
-    <div class="container">
-      <h2 class="section-title reveal">Photo <span class="gold">Gallery</span></h2>
-      <p class="section-subtitle reveal">A glimpse into the beauty and comfort of Amrous Dar.</p>
-      <div class="gallery-grid">
-        <div class="gallery-item reveal" style="transition-delay:0.05s;">
-          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Hotel Exterior" loading="lazy" />
-          <div class="overlay-icon"><i class="fas fa-search-plus"></i></div>
-        </div>
-        <div class="gallery-item reveal" style="transition-delay:0.1s;">
-          <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pool Area" loading="lazy" />
-          <div class="overlay-icon"><i class="fas fa-search-plus"></i></div>
-        </div>
-        <div class="gallery-item tall reveal" style="transition-delay:0.15s;">
-          <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Room Interior" loading="lazy" />
-          <div class="overlay-icon"><i class="fas fa-search-plus"></i></div>
-        </div>
-        <div class="gallery-item reveal" style="transition-delay:0.2s;">
-          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Restaurant" loading="lazy" />
-          <div class="overlay-icon"><i class="fas fa-search-plus"></i></div>
-        </div>
-        <div class="gallery-item reveal" style="transition-delay:0.25s;">
-          <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Garden Terrace" loading="lazy" />
-          <div class="overlay-icon"><i class="fas fa-search-plus"></i></div>
-        </div>
-        <div class="gallery-item reveal" style="transition-delay:0.3s;">
-          <img src="https://images.unsplash.com/photo-1631049552057-403cdb8f0658?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Family Suite" loading="lazy" />
-          <div class="overlay-icon"><i class="fas fa-search-plus"></i></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ VIRTUAL TOUR ============ -->
-  <section class="section section-light" id="virtual-tour">
-    <div class="container">
-      <div class="virtual-tour reveal">
-        <div class="ring"></div>
-        <div class="ring"></div>
-        <div class="ring"></div>
-        <h3><i class="fas fa-vr-cardboard"></i>360° Virtual Tour</h3>
-        <p>Explore Amrous Dar from the comfort of your home. Click below to start your immersive tour.</p>
-        <a href="#" class="btn-primary"><i class="fas fa-play"></i> Launch Virtual Tour</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ TESTIMONIALS ============ -->
-  <section class="section section-dark" id="testimonials">
-    <div class="container">
-      <h2 class="section-title reveal">Guest <span class="gold">Reviews</span></h2>
-      <p class="section-subtitle reveal">What our guests say about their stay at Amrous Dar.</p>
-      <div class="testimonials-wrapper">
-        <div class="testimonials-track">
-          <div class="testimonial-card">
-            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <blockquote>"A hidden gem in Azrou! The staff was incredibly welcoming, the pool was perfect, and the breakfast was delicious."</blockquote>
-            <div class="author">Ismail <span>– Sweden</span></div>
-          </div>
-          <div class="testimonial-card">
-            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-            <blockquote>"Lovely place surrounded by nature. The rooms are clean and comfortable, and the terrace offers stunning views."</blockquote>
-            <div class="author">Fatima <span>– Morocco</span></div>
-          </div>
-          <div class="testimonial-card">
-            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <blockquote>"Excellent value for money. The staff went above and beyond. The location is perfect for exploring the Middle Atlas."</blockquote>
-            <div class="author">David <span>– France</span></div>
-          </div>
-          <div class="testimonial-card">
-            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <blockquote>"We loved the authentic atmosphere and the delicious tagine. The pool was a refreshing treat after a day of hiking."</blockquote>
-            <div class="author">Maria <span>– Spain</span></div>
-          </div>
-          <div class="testimonial-card">
-            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <blockquote>"A hidden gem in Azrou! The staff was incredibly welcoming, the pool was perfect, and the breakfast was delicious."</blockquote>
-            <div class="author">Ismail <span>– Sweden</span></div>
-          </div>
-          <div class="testimonial-card">
-            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-            <blockquote>"Lovely place surrounded by nature. The rooms are clean and comfortable, and the terrace offers stunning views."</blockquote>
-            <div class="author">Fatima <span>– Morocco</span></div>
-          </div>
-          <div class="testimonial-card">
-            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <blockquote>"Excellent value for money. The staff went above and beyond. The location is perfect for exploring the Middle Atlas."</blockquote>
-            <div class="author">David <span>– France</span></div>
-          </div>
-          <div class="testimonial-card">
-            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <blockquote>"We loved the authentic atmosphere and the delicious tagine. The pool was a refreshing treat after a day of hiking."</blockquote>
-            <div class="author">Maria <span>– Spain</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ SPECIAL OFFERS ============ -->
-  <section class="section section-light" id="offers">
-    <div class="container">
-      <h2 class="section-title reveal">Special <span class="gold">Offers</span></h2>
-      <p class="section-subtitle reveal">Exclusive deals for direct bookings. Save more when you book with us.</p>
-      <div class="offers-grid">
-        <div class="offer-card reveal" style="transition-delay:0.05s;">
-          <div class="offer-icon"><i class="fas fa-gift"></i></div>
-          <h4>Welcome Package</h4>
-          <p>Complimentary Moroccan tea &amp; pastries upon arrival for all direct bookings.</p>
-        </div>
-        <div class="offer-card reveal" style="transition-delay:0.1s;">
-          <div class="offer-icon"><i class="fas fa-percent"></i></div>
-          <h4>Stay 3, Pay 2</h4>
-          <p>Book 3 nights and get the 3rd night free. Available year-round.</p>
-        </div>
-        <div class="offer-card reveal" style="transition-delay:0.15s;">
-          <div class="offer-icon"><i class="fas fa-utensils"></i></div>
-          <h4>Dine &amp; Stay</h4>
-          <p>Half-board package including breakfast and dinner at 15% off.</p>
-        </div>
-        <div class="offer-card reveal" style="transition-delay:0.2s;">
-          <div class="offer-icon"><i class="fas fa-plane"></i></div>
-          <h4>Early Bird</h4>
-          <p>Book 30 days in advance and save up to 20% on your stay.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ BLOG ============ -->
-  <section class="section section-dark" id="blog">
-    <div class="container">
-      <h2 class="section-title reveal">From Our <span class="gold">Blog</span></h2>
-      <p class="section-subtitle reveal">Stories, tips, and insights from the Middle Atlas.</p>
-      <div class="blog-grid">
-        <div class="blog-card reveal" style="transition-delay:0.05s;">
-          <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cedar Forest" loading="lazy" />
-          <div class="blog-card-body">
-            <div class="blog-date">June 15, 2026</div>
-            <h4>Exploring the Cedar Forests of Azrou</h4>
-            <p>Discover the ancient cedar trees and playful Barbary macaques in the heart of the Middle Atlas.</p>
-            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-        <div class="blog-card reveal" style="transition-delay:0.1s;">
-          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ifrane" loading="lazy" />
-          <div class="blog-card-body">
-            <div class="blog-date">June 8, 2026</div>
-            <h4>Day Trip to Ifrane – The Switzerland of Morocco</h4>
-            <p>Just 10 miles from Azrou, Ifrane offers alpine charm, beautiful lakes, and cool mountain air.</p>
-            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-        <div class="blog-card reveal" style="transition-delay:0.15s;">
-          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f5f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Moroccan Cuisine" loading="lazy" />
-          <div class="blog-card-body">
-            <div class="blog-date">June 1, 2026</div>
-            <h4>A Taste of Morocco – Our Signature Dishes</h4>
-            <p>From chicken tagine with preserved lemons to fluffy couscous, experience the flavors of Morocco.</p>
-            <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ CONTACT ============ -->
-  <section class="section section-light" id="contact">
-    <div class="container">
-      <div class="contact-grid">
-        <div class="contact-info reveal-left">
-          <span class="hero-badge" style="background:rgba(212,175,55,0.08);color:var(--gold);border-color:rgba(212,175,55,0.12);margin-bottom:16px;display:inline-flex;">Contact</span>
-          <h3>Get in <span class="gold">Touch</span></h3>
-          <p>We'd love to hear from you. Reach out for reservations, questions, or special requests.</p>
-          <ul class="contact-details">
-            <li><i class="fas fa-map-marker-alt"></i> Km 6 Route de Meknès, Azrou 53123, Morocco</li>
-            <li><i class="fas fa-phone"></i> +212 5 35 56 XX XX</li>
-            <li><i class="fas fa-envelope"></i> info@amrousdar.com</li>
-            <li><i class="fab fa-whatsapp" style="color:#25d366;"></i> +212 6 XX XX XX XX</li>
-          </ul>
-          <a href="https://wa.me/2126XXXXXXXX" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> Book via WhatsApp</a>
-        </div>
-        <div class="reveal-right">
-          <form class="contact-form" id="contactForm">
-            <div class="form-row">
-              <input type="text" placeholder="Full Name" required />
-              <input type="email" placeholder="Email Address" required />
-            </div>
-            <div class="form-row">
-              <input type="tel" placeholder="Phone Number" />
-              <input type="text" placeholder="Subject" />
-            </div>
-            <select>
-              <option value="">I'm interested in...</option>
-              <option value="booking">Booking a room</option>
-              <option value="restaurant">Restaurant reservation</option>
-              <option value="activities">Activities &amp; excursions</option>
-              <option value="other">Other inquiry</option>
+        <div class="field">
+            <label>guests</label>
+            <select id="guestsSelect">
+                <option>1</option>
+                <option selected>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
             </select>
-            <textarea placeholder="Your message..." required></textarea>
-            <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">Send Message</button>
-          </form>
         </div>
-      </div>
-      <div class="map-container reveal">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3308.123456789012!2d-5.123456!3d33.456789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDI3JzI0LjQiTiA1wrAwNyc0NC40Ilc!5e0!3m2!1sen!2sma!4v1234567890" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
+        <div class="field">
+            <label>rooms</label>
+            <select id="roomsSelect">
+                <option selected>1</option>
+                <option>2</option>
+                <option>3</option>
+            </select>
+        </div>
+        <button class="btn-gold" onclick="openModal()">Book</button>
     </div>
-  </section>
 
-  <!-- ============ BOOK SECTION ============ -->
-  <section class="section section-dark" id="book">
-    <div class="container">
-      <h2 class="section-title reveal">Book Your <span class="gold">Stay</span></h2>
-      <p class="section-subtitle reveal" style="margin:0 auto 32px;">Check availability and reserve your room directly. Best rates guaranteed.</p>
-      <div class="book-actions reveal">
-        <a href="#" class="btn-primary"><i class="fas fa-calendar-alt"></i> Check Availability</a>
-        <a href="https://wa.me/2126XXXXXXXX" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp Booking</a>
-        <a href="#contact" class="btn-outline">Contact Us</a>
-      </div>
-      <p style="margin-top:32px;color:var(--text-secondary);font-size:0.9rem;"><i class="fas fa-lock" style="margin-right:8px;"></i>Secure booking • No hidden fees • Direct support</p>
+    <!-- ── STORY ── -->
+    <section class="section" id="story">
+        <div class="container">
+            <span class="badge" style="font-size:0.45rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-muted);">Story</span>
+            <h2 class="section-title">A sanctuary in the <span class="gold">Atlas</span></h2>
+            <div class="section-divider"></div>
+            <p>Nestled at Km 6 Route de Meknès, just outside Azrou, Amrous‑Dar is a retreat where cedar forests whisper through every season. A place of authenticity, warmth, and quiet luxury.</p>
+            <p>We offer a Moroccan welcome with modern comforts — a seasonal pool, gardens, a restaurant blending local and Italian flavours, and attentive service around the clock.</p>
+            <p style="font-style:italic;color:var(--gold);">— Where every stay becomes a story.</p>
+        </div>
+    </section>
+
+    <!-- ── ROOMS ── -->
+    <section class="section" id="rooms" style="background:var(--bg-card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+        <div class="container">
+            <span class="badge" style="font-size:0.45rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-muted);">Rooms</span>
+            <h2 class="section-title">Our <span class="gold">Rooms</span></h2>
+            <p class="section-subtitle">Comfortable and thoughtfully designed spaces for every traveler.</p>
+            <div class="rooms-grid">
+                <div class="room-card">
+                    <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800&q=80" alt="Standard Room" loading="lazy" />
+                    <div class="room-card-body">
+                        <h3>Standard Room</h3>
+                        <div class="room-price">From 450 MAD / night</div>
+                        <p>Cozy room with garden views, air conditioning, private bathroom, and free Wi-Fi.</p>
+                        <div class="room-amenities">
+                            <span><i class="fas fa-wifi"></i> Wi-Fi</span>
+                            <span><i class="fas fa-snowflake"></i> A/C</span>
+                            <span><i class="fas fa-shower"></i> Bath</span>
+                            <span><i class="fas fa-tv"></i> TV</span>
+                        </div>
+                        <button class="btn-gold" onclick="openModal()">Book Now</button>
+                    </div>
+                </div>
+                <div class="room-card">
+                    <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=800&q=80" alt="Superior Room" loading="lazy" />
+                    <div class="room-card-body">
+                        <h3>Superior Room</h3>
+                        <div class="room-price">From 650 MAD / night</div>
+                        <p>Spacious room with a private balcony, pool views, and enhanced amenities.</p>
+                        <div class="room-amenities">
+                            <span><i class="fas fa-wifi"></i> Wi-Fi</span>
+                            <span><i class="fas fa-snowflake"></i> A/C</span>
+                            <span><i class="fas fa-shower"></i> Bath</span>
+                            <span><i class="fas fa-tv"></i> TV</span>
+                            <span><i class="fas fa-balcony"></i> Balcony</span>
+                        </div>
+                        <button class="btn-gold" onclick="openModal()">Book Now</button>
+                    </div>
+                </div>
+                <div class="room-card">
+                    <img src="https://images.unsplash.com/photo-1631049552057-403cdb8f0658?w=800&q=80" alt="Family Suite" loading="lazy" />
+                    <div class="room-card-body">
+                        <h3>Family Suite</h3>
+                        <div class="room-price">From 850 MAD / night</div>
+                        <p>Perfect for families or groups, featuring two connected rooms and mountain views.</p>
+                        <div class="room-amenities">
+                            <span><i class="fas fa-wifi"></i> Wi-Fi</span>
+                            <span><i class="fas fa-snowflake"></i> A/C</span>
+                            <span><i class="fas fa-shower"></i> Bath</span>
+                            <span><i class="fas fa-tv"></i> TV</span>
+                            <span><i class="fas fa-users"></i> 2 Rooms</span>
+                        </div>
+                        <button class="btn-gold" onclick="openModal()">Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── DINING ── -->
+    <section class="section" id="dining">
+        <div class="container">
+            <div class="dining-grid">
+                <div class="dining-text">
+                    <span class="badge" style="font-size:0.45rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-muted);">Dining</span>
+                    <h3>Authentic <span class="gold">Moroccan Cuisine</span></h3>
+                    <p>Our on-site restaurant serves traditional Moroccan dishes prepared with fresh, local ingredients. From fragrant tagines to fluffy couscous, every meal is a celebration of flavor.</p>
+                    <p>Start your day with a continental or halal breakfast, and return in the evening for a memorable dinner under the stars on our terrace.</p>
+                    <div class="dining-hours">
+                        <div><i class="fas fa-utensils"></i> Breakfast: 7:00 – 10:00</div>
+                        <div><i class="fas fa-utensils"></i> Dinner: 19:00 – 22:00</div>
+                        <div><i class="fas fa-mug-saucer"></i> Terrace &amp; Lounge: All day</div>
+                    </div>
+                </div>
+                <div class="dining-image">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80" alt="Restaurant at Amrous Dar" loading="lazy" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── GALLERY ── -->
+    <section class="section" id="gallery" style="background:var(--bg-card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+        <div class="container">
+            <span class="badge" style="font-size:0.45rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-muted);">Gallery</span>
+            <h2 class="section-title">Photo <span class="gold">Gallery</span></h2>
+            <p class="section-subtitle">A glimpse into the beauty and comfort of Amrous Dar.</p>
+            <div class="gallery-grid">
+                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80" alt="Hotel Exterior" loading="lazy" />
+                <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=600&q=80" alt="Pool Area" loading="lazy" />
+                <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=600&q=80" alt="Room Interior" loading="lazy" class="tall" />
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80" alt="Restaurant" loading="lazy" />
+                <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80" alt="Garden Terrace" loading="lazy" />
+                <img src="https://images.unsplash.com/photo-1631049552057-403cdb8f0658?w=600&q=80" alt="Family Suite" loading="lazy" />
+            </div>
+        </div>
+    </section>
+
+    <!-- ── TESTIMONIALS ── -->
+    <section class="section" id="testimonials">
+        <div class="container">
+            <span class="badge" style="font-size:0.45rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-muted);">Testimonials</span>
+            <h2 class="section-title">Guest <span class="gold">Reviews</span></h2>
+            <p class="section-subtitle">What our guests say about their stay at Amrous Dar.</p>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <blockquote>"A hidden gem in Azrou! The staff was incredibly welcoming, the pool was perfect, and the breakfast was delicious."</blockquote>
+                    <div class="author">Ismail <span>– Sweden</span></div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                    <blockquote>"Lovely place surrounded by nature. The rooms are clean and comfortable, and the terrace offers stunning views."</blockquote>
+                    <div class="author">Fatima <span>– Morocco</span></div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <blockquote>"Excellent value for money. The staff went above and beyond. The location is perfect for exploring the Middle Atlas."</blockquote>
+                    <div class="author">David <span>– France</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── CONTACT ── -->
+    <section class="section" id="contact" style="background:var(--bg-card);border-top:1px solid var(--border);">
+        <div class="container">
+            <span class="badge" style="font-size:0.45rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--text-muted);">Contact</span>
+            <h2 class="section-title">Get in <span class="gold">Touch</span></h2>
+            <div class="contact-grid">
+                <div>
+                    <p style="color:var(--text-secondary);line-height:1.8;">We'd love to hear from you. Reach out for reservations, questions, or special requests.</p>
+                    <ul class="contact-details">
+                        <li><i class="fas fa-map-marker-alt"></i> Km 6 Route de Meknès, Azrou 53123, Morocco</li>
+                        <li><i class="fas fa-phone"></i> +212 5 35 56 XX XX</li>
+                        <li><i class="fas fa-envelope"></i> info@amrousdar.com</li>
+                        <li><i class="fab fa-whatsapp" style="color:#25d366;"></i> +212 6 XX XX XX XX</li>
+                    </ul>
+                    <button class="btn-gold" onclick="openModal()"><i class="fas fa-calendar-check" style="margin-right:0.6rem;"></i> Reserve Now</button>
+                </div>
+                <div>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-row">
+                            <input type="text" placeholder="Full Name" required />
+                            <input type="email" placeholder="Email Address" required />
+                        </div>
+                        <div class="form-row">
+                            <input type="tel" placeholder="Phone Number" />
+                            <input type="text" placeholder="Subject" />
+                        </div>
+                        <select>
+                            <option value="">I'm interested in...</option>
+                            <option value="booking">Booking a room</option>
+                            <option value="restaurant">Restaurant reservation</option>
+                            <option value="activities">Activities &amp; excursions</option>
+                            <option value="other">Other inquiry</option>
+                        </select>
+                        <textarea placeholder="Your message..." required></textarea>
+                        <button type="submit" class="btn-gold" style="width:100%;justify-content:center;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3308.123456789012!2d-5.123456!3d33.456789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDI3JzI0LjQiTiA1wrAwNyc0NC40Ilc!5e0!3m2!1sen!2sma!4v1234567890" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#home" class="logo">amrous<em>‑dar</em></a>
+                <p>Authentic Moroccan hospitality in the heart of the Middle Atlas Mountains.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="#" aria-label="TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="#story">Story</a></li>
+                    <li><a href="#rooms">Rooms</a></li>
+                    <li><a href="#dining">Dining</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="#"><i class="fas fa-envelope" style="margin-right:0.5rem;color:var(--gold);"></i> Newsletter</a></li>
+                    <li><a href="#"><i class="fab fa-whatsapp" style="margin-right:0.5rem;color:#25d366;"></i> WhatsApp</a></li>
+                    <li><a href="#"><i class="fas fa-phone" style="margin-right:0.5rem;color:var(--gold);"></i> +212 5 35 56 XX XX</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Amrous Dar. All rights reserved.</span>
+            <span>Made with <span class="heart">♥</span> in Azrou</span>
+        </div>
+    </footer>
+
+    <!-- ── MODAL ── -->
+    <div id="bookingModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <h3>Reserve your stay</h3>
+            <p>Fill in your details and we'll be in touch.</p>
+            <form id="modalForm">
+                <input type="text" placeholder="Full name" required />
+                <input type="email" placeholder="Email address" required />
+                <input type="tel" placeholder="Phone number" />
+                <button type="submit" class="btn-gold">Send request</button>
+            </form>
+        </div>
     </div>
-  </section>
 
-  <!-- ============ FOOTER ============ -->
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="#" class="logo">Amrous <span>Dar</span></a>
-          <p>Authentic Moroccan hospitality in the heart of the Middle Atlas Mountains.</p>
-          <div class="footer-social">
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-            <a href="#" aria-label="TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
-          </div>
-        </div>
-        <div class="footer-col">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#rooms">Rooms</a></li>
-            <li><a href="#restaurant">Dining</a></li>
-            <li><a href="#activities">Activities</a></li>
-            <li><a href="#offers">Special Offers</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Support</h4>
-          <ul>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms &amp; Conditions</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Stay Connected</h4>
-          <ul>
-            <li><a href="#"><i class="fas fa-envelope" style="margin-right:8px;color:var(--gold);"></i> Newsletter</a></li>
-            <li><a href="https://wa.me/2126XXXXXXXX" target="_blank"><i class="fab fa-whatsapp" style="margin-right:8px;color:#25d366;"></i> WhatsApp</a></li>
-            <li><a href="#"><i class="fas fa-phone" style="margin-right:8px;color:var(--gold);"></i> +212 5 35 56 XX XX</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <span>&copy; 2026 Amrous Dar. All rights reserved.</span>
-        <span>Made with <i class="fas fa-heart"></i> in Azrou</span>
-      </div>
-    </div>
-  </footer>
+    <!-- ── FONT AWESOME ── -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
-  <!-- ============ WHATSAPP FLOAT ============ -->
-  <a href="https://wa.me/2126XXXXXXXX" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-
-  <!-- ============ JAVASCRIPT ============ -->
-  <script>
-    // ----- Custom Cursor Glow -----
-    const cursorGlow = document.getElementById('cursorGlow');
-    document.addEventListener('mousemove', (e) => {
-      cursorGlow.style.left = e.clientX + 'px';
-      cursorGlow.style.top = e.clientY + 'px';
-    });
-
-    // ----- Hamburger Menu -----
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
-    hamburger.addEventListener('click', () => {
-      hamburger.classList.toggle('active');
-      navLinks.classList.toggle('open');
-    });
-    document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navLinks.classList.remove('open');
-      });
-    });
-
-    // ----- Header scroll effect -----
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      header.classList.toggle('scrolled', window.scrollY > 60);
-    });
-
-    // ----- Scroll Reveal Animations -----
-    const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-rotate');
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    revealElements.forEach(el => revealObserver.observe(el));
-
-    // ----- Animated Counters (Hero Stats) -----
-    const statNumbers = document.querySelectorAll('.hero-stat .number');
-    let counted = false;
-
-    function animateCounters() {
-      statNumbers.forEach(stat => {
-        const target = parseFloat(stat.dataset.count);
-        const isFloat = target % 1 !== 0;
-        const duration = 2000;
-        const startTime = performance.now();
-
-        function updateCounter(currentTime) {
-          const elapsed = currentTime - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          const current = eased * target;
-          stat.textContent = isFloat ? current.toFixed(1) : Math.floor(current);
-          if (progress < 1) {
-            requestAnimationFrame(updateCounter);
-          } else {
-            stat.textContent = isFloat ? target.toFixed(1) : target;
-          }
-        }
-        requestAnimationFrame(updateCounter);
-      });
-    }
-
-    const heroStats = document.querySelector('.hero-stats');
-    const statsObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !counted) {
-          counted = true;
-          animateCounters();
-        }
-      });
-    }, { threshold: 0.3 });
-    if (heroStats) statsObserver.observe(heroStats);
-
-    // ----- Particles Canvas (Hero Background) -----
-    const canvas = document.getElementById('particlesCanvas');
-    if (canvas) {
-      const ctx = canvas.getContext('2d');
-      let width, height;
-      let particles = [];
-
-      function resizeCanvas() {
-        const rect = canvas.parentElement.getBoundingClientRect();
-        width = canvas.width = rect.width;
-        height = canvas.height = rect.height;
-      }
-      resizeCanvas();
-      window.addEventListener('resize', resizeCanvas);
-
-      class Particle {
-        constructor() {
-          this.x = Math.random() * width;
-          this.y = Math.random() * height;
-          this.size = Math.random() * 2 + 0.5;
-          this.speedX = (Math.random() - 0.5) * 0.4;
-          this.speedY = (Math.random() - 0.5) * 0.4;
-          this.opacity = Math.random() * 0.4 + 0.1;
-        }
-        update() {
-          this.x += this.speedX;
-          this.y += this.speedY;
-          if (this.x > width) this.x = 0;
-          if (this.x < 0) this.x = width;
-          if (this.y > height) this.y = 0;
-          if (this.y < 0) this.y = height;
-        }
-        draw() {
-          ctx.beginPath();
-          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`;
-          ctx.fill();
-        }
-      }
-
-      const particleCount = Math.min(80, Math.floor((width * height) / 15000));
-      for (let i = 0; i < particleCount; i++) {
-        particles.push(new Particle());
-      }
-
-      function animateParticles() {
-        ctx.clearRect(0, 0, width, height);
-        particles.forEach(p => {
-          p.update();
-          p.draw();
+    <script>
+        // ── LOADER ──
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 800);
         });
-        for (let i = 0; i < particles.length; i++) {
-          for (let j = i + 1; j < particles.length; j++) {
-            const dx = particles[i].x - particles[j].x;
-            const dy = particles[i].y - particles[j].y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 150) {
-              ctx.beginPath();
-              ctx.moveTo(particles[i].x, particles[i].y);
-              ctx.lineTo(particles[j].x, particles[j].y);
-              ctx.strokeStyle = `rgba(212, 175, 55, ${0.08 * (1 - dist / 150)})`;
-              ctx.lineWidth = 0.5;
-              ctx.stroke();
-            }
-          }
-        }
-        requestAnimationFrame(animateParticles);
-      }
-      animateParticles();
-    }
 
-    // ----- 3D Tilt Effect on Room Cards -----
-    document.querySelectorAll('[data-tilt]').forEach(card => {
-      card.addEventListener('mousemove', function(e) {
-        const rect = this.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const rotateX = ((y - centerY) / centerY) * -6;
-        const rotateY = ((x - centerX) / centerX) * 6;
-        const inner = this.querySelector('.card-inner');
-        if (inner) {
-          inner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        }
-      });
-      card.addEventListener('mouseleave', function() {
-        const inner = this.querySelector('.card-inner');
-        if (inner) {
-          inner.style.transform = 'rotateX(0deg) rotateY(0deg)';
-        }
-      });
-    });
-
-    // ----- Gallery Lightbox -----
-    document.querySelectorAll('.gallery-item').forEach(item => {
-      item.addEventListener('click', function() {
-        const img = this.querySelector('img');
-        if (!img) return;
-        const overlay = document.createElement('div');
-        overlay.style.cssText = `
-          position: fixed; inset: 0; background: rgba(0,0,0,0.92);
-          display: flex; align-items: center; justify-content: center;
-          z-index: 9999; cursor: pointer; backdrop-filter: blur(16px);
-          padding: 40px;
-        `;
-        const clone = img.cloneNode();
-        clone.style.maxWidth = '90vw';
-        clone.style.maxHeight = '90vh';
-        clone.style.borderRadius = '16px';
-        clone.style.boxShadow = '0 40px 80px rgba(0,0,0,0.8)';
-        clone.style.objectFit = 'contain';
-        overlay.appendChild(clone);
-        document.body.appendChild(overlay);
-        overlay.addEventListener('click', () => overlay.remove());
-        document.addEventListener('keydown', function escHandler(e) {
-          if (e.key === 'Escape') {
-            overlay.remove();
-            document.removeEventListener('keydown', escHandler);
-          }
+        // ── CUSTOM CURSOR ──
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
         });
-      });
-    });
 
-    // ----- Contact Form -----
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('Thank you for your message! We will get back to you shortly.');
-      this.reset();
-    });
+        document.querySelectorAll('a, button, .btn-gold, .btn-outline, .nav-reserve, .floating-booking .field input, .floating-booking .field select')
+            .forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('active'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
+            });
 
-    // ----- Language Switcher (Demo) -----
-    document.querySelectorAll('.lang-switch button').forEach(btn => {
-      btn.addEventListener('click', function() {
-        document.querySelectorAll('.lang-switch button').forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
-        alert('Language switched to ' + this.textContent.trim() + ' (demo)');
-      });
-    });
-
-    // ----- Smooth Anchor Scroll -----
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        if (href === '#') return;
-        const target = document.querySelector(href);
-        if (target) {
-          e.preventDefault();
-          const offsetTop = target.getBoundingClientRect().top + window.pageYOffset - 80;
-          window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+        // ── IMAGE LOAD ──
+        const heroImage = document.getElementById('heroImage');
+        if (heroImage.complete) {
+            heroImage.classList.add('loaded');
+        } else {
+            heroImage.addEventListener('load', () => {
+                heroImage.classList.add('loaded');
+            });
         }
-      });
-    });
 
-    // ----- Parallax effect on hero video -----
-    window.addEventListener('scroll', () => {
-      const hero = document.querySelector('.hero');
-      if (hero) {
-        const scrolled = window.pageYOffset;
-        const video = hero.querySelector('.hero-video');
-        if (video) {
-          video.style.transform = `scale(1.1) translateY(${scrolled * 0.05}px)`;
+        // ── MOBILE MENU ──
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        function toggleMenu() {
+            menuToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
         }
-      }
-    });
 
-    // ----- Dynamic year in footer -----
-    document.querySelector('.footer-bottom span:first-child').textContent =
-      `© ${new Date().getFullYear()} Amrous Dar. All rights reserved.`;
+        menuToggle.addEventListener('click', toggleMenu);
 
-    console.log('✨ Amrous Dar — Luxury Hotel Website ✨');
-    console.log('📌 Centered uppercase luxury hero with premium typography.');
-  </script>
+        // ── MODAL ──
+        const modal = document.getElementById('bookingModal');
+
+        function openModal() {
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // ── FLOATING BOOKING: date defaults ──
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        const mm = String(today.getMonth() + 1).padStart(2, '0');
+        const dd = String(today.getDate()).padStart(2, '0');
+
+        const checkin = document.getElementById('checkinDate');
+        const checkout = document.getElementById('checkoutDate');
+
+        if (checkin) checkin.value = `${yyyy}-${mm}-${dd}`;
+        if (checkout) {
+            const future = new Date(today);
+            future.setDate(today.getDate() + 3);
+            const fyy = future.getFullYear();
+            const fmm = String(future.getMonth() + 1).padStart(2, '0');
+            const fdd = String(future.getDate()).padStart(2, '0');
+            checkout.value = `${fyy}-${fmm}-${fdd}`;
+        }
+
+        // ── CONTACT FORM ──
+        document.getElementById('contactForm')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you! We will be in touch shortly.');
+            e.target.reset();
+        });
+
+        // ── MODAL FORM ──
+        document.getElementById('modalForm')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you! We will be in touch shortly.');
+            closeModal();
+            e.target.reset();
+        });
+
+        // ── SMOOTH SCROLL ──
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    const offsetTop = target.getBoundingClientRect().top + window.pageYOffset - 80;
+                    window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                }
+            });
+        });
+
+        console.log('✦ Amrous‑Dar · Avant‑garde hospitality ✦');
+        console.log('📍 Azrou · Middle Atlas');
+    </script>
 </body>
 </html>
