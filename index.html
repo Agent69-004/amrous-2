@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amrous Dar | Boutique Hotel Azrou – Luxury &amp; Authenticity</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    /* ---------- RESET & VARIABLES ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --gold: #d4af37;
+      --gold-light: #f2e5c7;
+      --gold-dark: #b8962e;
+      --dark: #0d0d0d;
+      --dark-card: #181818;
+      --text-primary: #f5f0ea;
+      --text-secondary: #b8b0a8;
+      --glass-bg: rgba(255, 255, 255, 0.06);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --shadow-glow: 0 20px 50px rgba(0, 0, 0, 0.6);
+      --radius: 20px;
+      --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--dark);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: var(--gold);
+      color: var(--dark);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    img {
+      display: block;
+      max-width: 100%;
+    }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 30px;
+    }
+
+    /* ---------- SCROLLBAR ---------- */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--dark);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 10px;
+    }
+
+    /* ---------- GLASS CARD ---------- */
+    .glass-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-glow);
+      transition: var(--transition);
+    }
+
+    /* ---------- BUTTONS ---------- */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: var(--dark);
+      font-weight: 600;
+      padding: 16px 40px;
+      border-radius: 50px;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 8px 30px rgba(212, 175, 55, 0.3);
+      letter-spacing: 0.5px;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 12px 40px rgba(212, 175, 55, 0.5);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--text-primary);
+      font-weight: 500;
+      padding: 14px 32px;
+      border-radius: 50px;
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
+      transition: var(--transition);
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #25d366;
+      color: #fff;
+      font-weight: 600;
+      padding: 16px 36px;
+      border-radius: 50px;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 8px 30px rgba(37, 211, 102, 0.3);
+    }
+
+    .btn-whatsapp:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(37, 211, 102, 0.5);
+    }
+
+    /* ---------- HEADER ---------- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 16px 0;
+      transition: var(--transition);
+      background: transparent;
+    }
+
+    header.scrolled {
+      background: rgba(13, 13, 13, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 10px 0;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 1px;
+    }
+    .logo span {
+      color: var(--text-primary);
+      font-weight: 300;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: var(--transition);
+      position: relative;
+      letter-spacing: 0.3px;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--dark) !important;
+      padding: 8px 22px;
+      border-radius: 30px;
+      font-weight: 600 !important;
+    }
+    .nav-cta::after {
+      display: none !important;
+    }
+    .nav-cta:hover {
+      background: var(--gold-light) !important;
+      color: var(--dark) !important;
+    }
+
+    .lang-switch {
+      display: flex;
+      gap: 6px;
+      margin-left: 12px;
+    }
+    .lang-switch button {
+      background: transparent;
+      border: none;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: var(--transition);
+      text-transform: uppercase;
+    }
+    .lang-switch button.active {
+      color: var(--gold);
+      background: rgba(212, 175, 55, 0.15);
+    }
+    .lang-switch button:hover {
+      color: #fff;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+    }
+    .hamburger span {
+      width: 30px;
+      height: 2px;
+      background: var(--text-primary);
+      transition: var(--transition);
+      border-radius: 4px;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      background: var(--dark);
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      filter: brightness(0.4) saturate(0.8);
+      transform: scale(1.05);
+      animation: heroZoom 20s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroZoom {
+      0% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1.15);
+      }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 40%, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.7) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      padding: 40px 0;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(212, 175, 55, 0.15);
+      backdrop-filter: blur(8px);
+      padding: 8px 20px;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      color: var(--gold-light);
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.8rem;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .hero h1 span {
+      color: var(--gold);
+      background: linear-gradient(135deg, var(--gold), #f5d76e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.8);
+      max-width: 540px;
+      margin-bottom: 36px;
+      line-height: 1.8;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    /* floating particles (decorative) */
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.15;
+      pointer-events: none;
+      animation: floatParticle 15s infinite alternate ease-in-out;
+    }
+    .particle:nth-child(1) {
+      width: 200px;
+      height: 200px;
+      top: 10%;
+      left: 5%;
+      animation-delay: 0s;
+    }
+    .particle:nth-child(2) {
+      width: 300px;
+      height: 300px;
+      bottom: 10%;
+      right: 5%;
+      animation-delay: 5s;
+      opacity: 0.08;
+    }
+    @keyframes floatParticle {
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+      100% {
+        transform: translate(40px, -40px) scale(1.2);
+      }
+    }
+
+    /* ---------- SECTION COMMON ---------- */
+    .section {
+      padding: 100px 0;
+      position: relative;
+    }
+
+    .section-dark {
+      background: var(--dark);
+    }
+
+    .section-light {
+      background: #111;
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .section-title span {
+      color: var(--gold);
+    }
+    .section-subtitle {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin-bottom: 48px;
+    }
+
+    .section-dark .section-title {
+      color: var(--text-primary);
+    }
+    .section-dark .section-subtitle {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* ---------- REVEAL ANIMATIONS ---------- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .reveal-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* ---------- ABOUT ---------- */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-image {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-glow);
+      position: relative;
+    }
+    .about-image img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+    .about-image:hover img {
+      transform: scale(1.03);
+    }
+    .about-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), transparent);
+      pointer-events: none;
+    }
+
+    .about-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      margin-bottom: 16px;
+    }
+    .about-text h3 span {
+      color: var(--gold);
+    }
+    .about-text p {
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      line-height: 1.8;
+    }
+
+    .about-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 20px;
+      margin-top: 24px;
+    }
+    .about-features li {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+    .about-features li i {
+      color: var(--gold);
+      width: 20px;
+    }
+
+    /* ---------- ROOMS ---------- */
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 32px;
+    }
+
+    .room-card {
+      background: var(--dark-card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: var(--transition);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      position: relative;
+    }
+    .room-card:hover {
+      transform: translateY(-12px);
+      border-color: var(--gold);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .room-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+    .room-card:hover img {
+      transform: scale(1.04);
+    }
+
+    .room-card-body {
+      padding: 28px;
+    }
+    .room-card-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      margin-bottom: 4px;
+    }
+    .room-price {
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+    .room-card-body p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+    .room-amenities {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .room-amenities span {
+      background: rgba(255, 255, 255, 0.04);
+      padding: 4px 16px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .room-amenities span i {
+      margin-right: 6px;
+      color: var(--gold);
+    }
+
+    /* ---------- RESTAURANT ---------- */
+    .restaurant-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .restaurant-image {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-glow);
+    }
+    .restaurant-image img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+    .restaurant-image:hover img {
+      transform: scale(1.03);
+    }
+
+    .restaurant-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+    }
+    .restaurant-text h3 span {
+      color: var(--gold);
+    }
+    .restaurant-text p {
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+      line-height: 1.8;
+    }
+    .restaurant-hours {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-top: 20px;
+    }
+    .restaurant-hours div {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-secondary);
+    }
+    .restaurant-hours i {
+      color: var(--gold);
+      width: 24px;
+    }
+
+    /* ---------- ACTIVITIES ---------- */
+    .activities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 28px;
+    }
+    .activity-item {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 36px 20px;
+      border-radius: var(--radius);
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      transition: var(--transition);
+      cursor: default;
+    }
+    .activity-item:hover {
+      background: rgba(212, 175, 55, 0.06);
+      transform: translateY(-8px);
+      border-color: rgba(212, 175, 55, 0.2);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+    .activity-item i {
+      font-size: 2.8rem;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .activity-item h4 {
+      font-size: 1.2rem;
+      margin-bottom: 4px;
+    }
+    .activity-item p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* ---------- GALLERY ---------- */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .gallery-grid img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 16px;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .gallery-grid img:hover {
+      transform: scale(1.04);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    }
+    .gallery-grid .tall {
+      grid-row: span 2;
+      height: 496px;
+    }
+
+    /* ---------- VIRTUAL TOUR ---------- */
+    .virtual-tour {
+      background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
+      border-radius: var(--radius);
+      padding: 64px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(212, 175, 55, 0.1);
+    }
+    .virtual-tour::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 50%, rgba(212, 175, 55, 0.06), transparent 70%);
+      animation: pulseGlow 6s ease-in-out infinite;
+    }
+    @keyframes pulseGlow {
+      0%,
+      100% {
+        opacity: 0.5;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.05);
+      }
+    }
+    .virtual-tour h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.4rem;
+      color: #fff;
+      position: relative;
+      z-index: 1;
+    }
+    .virtual-tour p {
+      color: rgba(255, 255, 255, 0.6);
+      margin: 12px 0 28px;
+      position: relative;
+      z-index: 1;
+    }
+    .virtual-tour .btn-primary {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ---------- TESTIMONIALS ---------- */
+    .testimonials-slider {
+      display: flex;
+      gap: 28px;
+      overflow-x: auto;
+      padding: 12px 4px 24px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .testimonials-slider::-webkit-scrollbar {
+      height: 4px;
+    }
+    .testimonials-slider::-webkit-scrollbar-thumb {
+      background: var(--gold);
+      border-radius: 10px;
+    }
+
+    .testimonial-card {
+      min-width: 320px;
+      flex: 0 0 auto;
+      background: var(--dark-card);
+      padding: 28px;
+      border-radius: var(--radius);
+      border-left: 4px solid var(--gold);
+      scroll-snap-align: start;
+      transition: var(--transition);
+    }
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold-light);
+    }
+    .testimonial-card .stars {
+      color: var(--gold);
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+    }
+    .testimonial-card blockquote {
+      font-style: italic;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .testimonial-card .author {
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+    .testimonial-card .author span {
+      font-weight: 400;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+    }
+
+    /* ---------- BLOG ---------- */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 28px;
+    }
+    .blog-card {
+      background: var(--dark-card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: var(--transition);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .blog-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--gold);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+    .blog-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .blog-card-body {
+      padding: 24px;
+    }
+    .blog-card-body .blog-date {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .blog-card-body h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      margin: 6px 0 8px;
+    }
+    .blog-card-body p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* ---------- OFFERS ---------- */
+    .offers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 28px;
+    }
+    .offer-card {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 32px 24px;
+      border-radius: var(--radius);
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      transition: var(--transition);
+    }
+    .offer-card:hover {
+      background: rgba(212, 175, 55, 0.05);
+      transform: translateY(-6px);
+      border-color: rgba(212, 175, 55, 0.15);
+    }
+    .offer-card .offer-icon {
+      font-size: 2.4rem;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+    .offer-card h4 {
+      font-size: 1.2rem;
+      margin-bottom: 4px;
+    }
+    .offer-card p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* ---------- CONTACT & MAP ---------- */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+
+    .contact-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      margin-bottom: 12px;
+    }
+    .contact-info h3 span {
+      color: var(--gold);
+    }
+    .contact-info p {
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .contact-details li {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--text-secondary);
+    }
+    .contact-details li i {
+      color: var(--gold);
+      width: 24px;
+      font-size: 1.2rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      width: 100%;
+      padding: 16px 20px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 12px;
+      color: var(--text-primary);
+      font-size: 1rem;
+      transition: var(--transition);
+      font-family: inherit;
+      margin-bottom: 16px;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus,
+    .contact-form select:focus {
+      outline: none;
+      border-color: var(--gold);
+      background: rgba(255, 255, 255, 0.06);
+    }
+    .contact-form .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .contact-form textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+    .contact-form select option {
+      background: var(--dark);
+    }
+
+    .map-container {
+      margin-top: 48px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-glow);
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 380px;
+      border: 0;
+      display: block;
+      filter: grayscale(0.2) invert(0.1);
+    }
+
+    /* ---------- BOOK SECTION ---------- */
+    #book {
+      text-align: center;
+    }
+    #book .section-subtitle {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .book-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 16px;
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      background: #0a0a0a;
+      padding: 60px 0 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 40px;
+    }
+    .footer-brand .logo {
+      font-size: 2rem;
+    }
+    .footer-brand p {
+      color: var(--text-secondary);
+      max-width: 320px;
+      margin: 12px 0 20px;
+    }
+    .footer-social {
+      display: flex;
+      gap: 12px;
+    }
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-secondary);
+      transition: var(--transition);
+      font-size: 1.2rem;
+    }
+    .footer-social a:hover {
+      background: var(--gold);
+      color: var(--dark);
+      transform: translateY(-4px);
+    }
+
+    .footer-col h4 {
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+      color: var(--text-primary);
+    }
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-col ul a {
+      color: var(--text-secondary);
+      transition: var(--transition);
+      font-size: 0.95rem;
+    }
+    .footer-col ul a:hover {
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+    .footer-bottom i {
+      color: var(--gold);
+    }
+
+    /* ---------- WHATSAPP FLOAT ---------- */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 999;
+      background: #25d366;
+      color: #fff;
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4rem;
+      box-shadow: 0 8px 32px rgba(37, 211, 102, 0.4);
+      transition: var(--transition);
+      animation: pulseWhatsApp 2.5s ease-in-out infinite;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.08);
+      box-shadow: 0 12px 40px rgba(37, 211, 102, 0.6);
+    }
+    @keyframes pulseWhatsApp {
+      0%,
+      100% {
+        box-shadow: 0 8px 32px rgba(37, 211, 102, 0.4);
+      }
+      50% {
+        box-shadow: 0 8px 48px rgba(37, 211, 102, 0.7);
+      }
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 1024px) {
+      .hero h1 {
+        font-size: 3.6rem;
+      }
+      .about-grid,
+      .restaurant-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .gallery-grid .tall {
+        height: 240px;
+        grid-row: auto;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(13, 13, 13, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 28px;
+        display: none;
+        z-index: 999;
+        padding: 40px;
+      }
+      .nav-links.open {
+        display: flex;
+      }
+      .hamburger {
+        display: flex;
+        z-index: 1001;
+      }
+      .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+      }
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+      }
+
+      .hero h1 {
+        font-size: 2.6rem;
+      }
+      .section-title {
+        font-size: 2.2rem;
+      }
+      .about-features {
+        grid-template-columns: 1fr;
+      }
+      .rooms-grid {
+        grid-template-columns: 1fr;
+      }
+      .contact-form .form-row {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .testimonial-card {
+        min-width: 280px;
+      }
+      .virtual-tour {
+        padding: 40px 24px;
+      }
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .btn-primary,
+      .btn-outline,
+      .btn-whatsapp {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+      }
+      .container {
+        padding: 0 16px;
+      }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ HEADER ============ -->
+  <header id="header">
+    <div class="container nav-container">
+      <a href="#" class="logo">Amrous <span>Dar</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#rooms">Rooms</a></li>
+        <li><a href="#restaurant">Dining</a></li>
+        <li><a href="#activities">Activities</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#offers">Offers</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#book" class="nav-cta">Book Now</a></li>
+        <li class="lang-switch">
+          <button class="active" data-lang="en">EN</button>
+          <button data-lang="fr">FR</button>
+          <button data-lang="ar">AR</button>
+        </li>
+      </ul>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="particle"></div>
+    <div class="particle" style="width:150px;height:150px;top:60%;left:70%;"></div>
+    <div class="container hero-content">
+      <div class="hero-badge"><i class="fas fa-star" style="margin-right:8px;"></i> Boutique Hotel in Azrou</div>
+      <h1>Welcome to <span>Amrous Dar</span></h1>
+      <p>Experience authentic Moroccan hospitality in the heart of the Middle Atlas Mountains. A tranquil retreat with modern comforts.</p>
+      <div class="hero-buttons">
+        <a href="#book" class="btn-primary"><i class="fas fa-calendar-check"></i> Check Availability</a>
+        <a href="#contact" class="btn-outline">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="section section-dark" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-image reveal-left">
+          <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Amrous Dar Exterior" loading="lazy" />
+        </div>
+        <div class="about-text reveal-right">
+          <span class="hero-badge" style="background:rgba(212,175,55,0.1);color:var(--gold);border-color:rgba(212,175,55,0.2);margin-bottom:12px;">About Us</span>
+          <h3>Your Home in the <span>Middle Atlas</span></h3>
+          <p>Nestled along the scenic Route de Meknès, just 6 km from the heart of Azrou, Amrous Dar offers a peaceful escape surrounded by nature. Our 2-star boutique hotel combines traditional Moroccan charm with modern amenities.</p>
+          <p>Whether you're exploring the cedar forests, visiting nearby Ifrane, or simply unwinding by our seasonal outdoor pool, we ensure every stay is memorable.</p>
+          <ul class="about-features">
+            <li><i class="fas fa-check-circle"></i> 13 Comfortable Rooms</li>
+            <li><i class="fas fa-check-circle"></i> Seasonal Outdoor Pool</li>
+            <li><i class="fas fa-check-circle"></i> Free Private Parking</li>
+            <li><i class="fas fa-check-circle"></i> Garden &amp; Terrace</li>
+            <li><i class="fas fa-check-circle"></i> Free Wi-Fi</li>
+            <li><i class="fas fa-check-circle"></i> 24-Hour Front Desk</li>
+            <li><i class="fas fa-check-circle"></i> Air Conditioning</li>
+            <li><i class="fas fa-check-circle"></i> Restaurant On-Site</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ROOMS ============ -->
+  <section class="section section-light" id="rooms">
+    <div class="container">
+      <h2 class="section-title reveal">Our <span>Rooms</span></h2>
+      <p class="section-subtitle reveal">Comfortable and thoughtfully designed spaces for every traveler.</p>
+      <div class="rooms-grid">
+        <div class="room-card reveal" style="transition-delay:0.1s;">
+          <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Standard Room" loading="lazy" />
+          <div class="room-card-body">
+            <h3>Standard Room</h3>
+            <div class="room-price">From 450 MAD / night</div>
+            <p>Cozy room with garden views, air conditioning, private bathroom, and free Wi-Fi.</p>
+            <div class="room-amenities">
+              <span><i class="fas fa-wifi"></i> Wi-Fi</span>
+              <span><i class="fas fa-snowflake"></i> A/C</span>
+              <span><i class="fas fa-shower"></i> Bath</span>
+              <span><i class="fas fa-tv"></i> TV</span>
+            </div>
+            <a href="#book" class="btn-primary" style="padding:12px 28px;font-size:0.9rem;width:100%;justify-content:center;">Book Now</a>
+          </div>
+        </div>
+        <div class="room-card reveal" style="transition-delay:0.2s;">
+          <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Superior Room" loading="lazy" />
+          <div class="room-card-body">
+            <h3>Superior Room</h3>
+            <div class="room-price">From 650 MAD / night</div>
+            <p>Spacious room with a private balcony, pool views, and enhanced amenities.</p>
+            <div class="room-amenities">
+              <span><i class="fas fa-wifi"></i> Wi-Fi</span>
+              <span><i class="fas fa-snowflake"></i> A/C</span>
+              <span><i class="fas fa-shower"></i> Bath</span>
+              <span><i class="fas fa-tv"></i> TV</span>
+              <span><i class="fas fa-balcony"></i> Balcony</span>
+            </div>
+            <a href="#book" class="btn-primary" style="padding:12px 28px;font-size:0.9rem;width:100%;justify-content:center;">Book Now</a>
+          </div>
+        </div>
+        <div class="room-card reveal" style="transition-delay:0.3s;">
+          <img src="https://images.unsplash.com/photo-1631049552057-403cdb8f0658?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Family Suite" loading="lazy" />
+          <div class="room-card-body">
+            <h3>Family Suite</h3>
+            <div class="room-price">From 850 MAD / night</div>
+            <p>Perfect for families or groups, featuring two connected rooms and mountain views.</p>
+            <div class="room-amenities">
+              <span><i class="fas fa-wifi"></i> Wi-Fi</span>
+              <span><i class="fas fa-snowflake"></i> A/C</span>
+              <span><i class="fas fa-shower"></i> Bath</span>
+              <span><i class="fas fa-tv"></i> TV</span>
+              <span><i class="fas fa-users"></i> 2 Rooms</span>
+            </div>
+            <a href="#book" class="btn-primary" style="padding:12px 28px;font-size:0.9rem;width:100%;justify-content:center;">Book Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RESTAURANT ============ -->
+  <section class="section section-dark" id="restaurant">
+    <div class="container">
+      <div class="restaurant-grid">
+        <div class="restaurant-text reveal-left">
+          <span class="hero-badge" style="background:rgba(212,175,55,0.1);color:var(--gold);border-color:rgba(212,175,55,0.2);margin-bottom:12px;">Dining</span>
+          <h3>Authentic <span>Moroccan Cuisine</span></h3>
+          <p>Our on-site restaurant serves traditional Moroccan dishes prepared with fresh, local ingredients. From fragrant tagines to fluffy couscous, every meal is a celebration of flavor.</p>
+          <p>Start your day with a continental or halal breakfast, and return in the evening for a memorable dinner under the stars on our terrace.</p>
+          <div class="restaurant-hours">
+            <div><i class="fas fa-utensils"></i> Breakfast: 7:00 – 10:00</div>
+            <div><i class="fas fa-utensils"></i> Dinner: 19:00 – 22:00</div>
+            <div><i class="fas fa-mug-saucer"></i> Terrace &amp; Lounge: All day</div>
+          </div>
+        </div>
+        <div class="restaurant-image reveal-right">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Restaurant at Amrous Dar" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ACTIVITIES ============ -->
+  <section class="section section-light" id="activities">
+    <div class="container">
+      <h2 class="section-title reveal">Activities &amp; <span>Excursions</span></h2>
+      <p class="section-subtitle reveal">Discover the beauty of Azrou and the Middle Atlas region.</p>
+      <div class="activities-grid">
+        <div class="activity-item reveal" style="transition-delay:0.05s;">
+          <i class="fas fa-tree"></i>
+          <h4>Cedar Forest Trek</h4>
+          <p>Explore the famous cedar forests home to Barbary macaques.</p>
+        </div>
+        <div class="activity-item reveal" style="transition-delay:0.1s;">
+          <i class="fas fa-mountain"></i>
+          <h4>Atlas Mountains</h4>
+          <p>Guided hiking tours with breathtaking panoramic views.</p>
+        </div>
+        <div class="activity-item reveal" style="transition-delay:0.15s;">
+          <i class="fas fa-city"></i>
+          <h4>Azrou Medina</h4>
+          <p>Wander through the vibrant souks and historic streets.</p>
+        </div>
+        <div class="activity-item reveal" style="transition-delay:0.2s;">
+          <i class="fas fa-water"></i>
+          <h4>Ifrane Lake</h4>
+          <p>Visit the serene lake just 24 km from the hotel.</p>
+        </div>
+        <div class="activity-item reveal" style="transition-delay:0.25s;">
+          <i class="fas fa-bicycle"></i>
+          <h4>Mountain Biking</h4>
+          <p>Rent a bike and explore scenic trails around Azrou.</p>
+        </div>
+        <div class="activity-item reveal" style="transition-delay:0.3s;">
+          <i class="fas fa-camera"></i>
+          <h4>Photography Tours</h4>
+          <p>Capture the stunning landscapes of the Middle Atlas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GALLERY ============ -->
+  <section class="section section-dark" id="gallery">
+    <div class="container">
+      <h2 class="section-title reveal">Photo <span>Gallery</span></h2>
+      <p class="section-subtitle reveal">A glimpse into the beauty and comfort of Amrous Dar.</p>
+      <div class="gallery-grid">
+        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Hotel Exterior" loading="lazy" class="reveal" style="transition-delay:0.05s;" />
+        <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Pool Area" loading="lazy" class="reveal" style="transition-delay:0.1s;" />
+        <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Room Interior" loading="lazy" class="tall reveal" style="transition-delay:0.15s;" />
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Restaurant" loading="lazy" class="reveal" style="transition-delay:0.2s;" />
+        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Garden Terrace" loading="lazy" class="reveal" style="transition-delay:0.25s;" />
+        <img src="https://images.unsplash.com/photo-1631049552057-403cdb8f0658?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Family Suite" loading="lazy" class="reveal" style="transition-delay:0.3s;" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VIRTUAL TOUR ============ -->
+  <section class="section section-light" id="virtual-tour">
+    <div class="container">
+      <div class="virtual-tour reveal">
+        <h3><i class="fas fa-vr-cardboard" style="margin-right:14px;color:var(--gold);"></i>360° Virtual Tour</h3>
+        <p>Explore Amrous Dar from the comfort of your home. Click below to start your immersive tour.</p>
+        <a href="#" class="btn-primary"><i class="fas fa-play"></i> Launch Virtual Tour</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="section section-dark" id="testimonials">
+    <div class="container">
+      <h2 class="section-title reveal">Guest <span>Reviews</span></h2>
+      <p class="section-subtitle reveal">What our guests say about their stay at Amrous Dar.</p>
+      <div class="testimonials-slider">
+        <div class="testimonial-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <blockquote>"A hidden gem in Azrou! The staff was incredibly welcoming, the pool was perfect, and the breakfast was delicious. Highly recommend for a peaceful getaway."</blockquote>
+          <div class="author">Ismail <span>– Sweden</span></div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+          <blockquote>"Lovely place surrounded by nature. The rooms are clean and comfortable, and the terrace offers stunning views. We'll definitely be back!"</blockquote>
+          <div class="author">Fatima <span>– Morocco</span></div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <blockquote>"Excellent value for money. The staff went above and beyond to make our stay special. The location is perfect for exploring the Middle Atlas."</blockquote>
+          <div class="author">David <span>– France</span></div>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <blockquote>"We loved the authentic atmosphere and the delicious tagine. The pool was a refreshing treat after a day of hiking."</blockquote>
+          <div class="author">Maria <span>– Spain</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SPECIAL OFFERS ============ -->
+  <section class="section section-light" id="offers">
+    <div class="container">
+      <h2 class="section-title reveal">Special <span>Offers</span></h2>
+      <p class="section-subtitle reveal">Exclusive deals for direct bookings. Save more when you book with us.</p>
+      <div class="offers-grid">
+        <div class="offer-card reveal" style="transition-delay:0.05s;">
+          <div class="offer-icon"><i class="fas fa-gift"></i></div>
+          <h4>Welcome Package</h4>
+          <p>Complimentary Moroccan tea &amp; pastries upon arrival for all direct bookings.</p>
+        </div>
+        <div class="offer-card reveal" style="transition-delay:0.1s;">
+          <div class="offer-icon"><i class="fas fa-percent"></i></div>
+          <h4>Stay 3, Pay 2</h4>
+          <p>Book 3 nights and get the 3rd night free. Available year-round.</p>
+        </div>
+        <div class="offer-card reveal" style="transition-delay:0.15s;">
+          <div class="offer-icon"><i class="fas fa-utensils"></i></div>
+          <h4>Dine &amp; Stay</h4>
+          <p>Half-board package including breakfast and dinner at 15% off.</p>
+        </div>
+        <div class="offer-card reveal" style="transition-delay:0.2s;">
+          <div class="offer-icon"><i class="fas fa-plane"></i></div>
+          <h4>Early Bird</h4>
+          <p>Book 30 days in advance and save up to 20% on your stay.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BLOG ============ -->
+  <section class="section section-dark" id="blog">
+    <div class="container">
+      <h2 class="section-title reveal">From Our <span>Blog</span></h2>
+      <p class="section-subtitle reveal">Stories, tips, and insights from the Middle Atlas.</p>
+      <div class="blog-grid">
+        <div class="blog-card reveal" style="transition-delay:0.05s;">
+          <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cedar Forest" loading="lazy" />
+          <div class="blog-card-body">
+            <div class="blog-date">June 15, 2026</div>
+            <h4>Exploring the Cedar Forests of Azrou</h4>
+            <p>Discover the ancient cedar trees and playful Barbary macaques in the heart of the Middle Atlas.</p>
+          </div>
+        </div>
+        <div class="blog-card reveal" style="transition-delay:0.1s;">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Ifrane" loading="lazy" />
+          <div class="blog-card-body">
+            <div class="blog-date">June 8, 2026</div>
+            <h4>Day Trip to Ifrane – The Switzerland of Morocco</h4>
+            <p>Just 10 miles from Azrou, Ifrane offers alpine charm, beautiful lakes, and cool mountain air.</p>
+          </div>
+        </div>
+        <div class="blog-card reveal" style="transition-delay:0.15s;">
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f5f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Moroccan Cuisine" loading="lazy" />
+          <div class="blog-card-body">
+            <div class="blog-date">June 1, 2026</div>
+            <h4>A Taste of Morocco – Our Signature Dishes</h4>
+            <p>From chicken tagine with preserved lemons to fluffy couscous, experience the flavors of Morocco.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT & MAP ============ -->
+  <section class="section section-light" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info reveal-left">
+          <span class="hero-badge" style="background:rgba(212,175,55,0.1);color:var(--gold);border-color:rgba(212,175,55,0.2);margin-bottom:12px;">Contact</span>
+          <h3>Get in <span>Touch</span></h3>
+          <p>We'd love to hear from you. Reach out for reservations, questions, or special requests.</p>
+          <ul class="contact-details">
+            <li><i class="fas fa-map-marker-alt"></i> Km 6 Route de Meknès, Azrou 53123, Morocco</li>
+            <li><i class="fas fa-phone"></i> +212 5 35 56 XX XX</li>
+            <li><i class="fas fa-envelope"></i> info@amrousdar.com</li>
+            <li><i class="fab fa-whatsapp" style="color:#25d366;"></i> +212 6 XX XX XX XX</li>
+          </ul>
+          <a href="https://wa.me/2126XXXXXXXX" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> Book via WhatsApp</a>
+        </div>
+        <div class="reveal-right">
+          <form class="contact-form" id="contactForm">
+            <div class="form-row">
+              <input type="text" placeholder="Full Name" required />
+              <input type="email" placeholder="Email Address" required />
+            </div>
+            <div class="form-row">
+              <input type="tel" placeholder="Phone Number" />
+              <input type="text" placeholder="Subject" />
+            </div>
+            <select>
+              <option value="">I'm interested in...</option>
+              <option value="booking">Booking a room</option>
+              <option value="restaurant">Restaurant reservation</option>
+              <option value="activities">Activities &amp; excursions</option>
+              <option value="other">Other inquiry</option>
+            </select>
+            <textarea placeholder="Your message..." required></textarea>
+            <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">Send Message</button>
+          </form>
+        </div>
+      </div>
+      <div class="map-container reveal">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3308.123456789012!2d-5.123456!3d33.456789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDI3JzI0LjQiTiA1wrAwNyc0NC40Ilc!5e0!3m2!1sen!2sma!4v1234567890" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BOOK SECTION ============ -->
+  <section class="section section-dark" id="book">
+    <div class="container">
+      <h2 class="section-title reveal">Book Your <span>Stay</span></h2>
+      <p class="section-subtitle reveal" style="margin:0 auto 32px;">Check availability and reserve your room directly. Best rates guaranteed.</p>
+      <div class="book-actions reveal">
+        <a href="#" class="btn-primary"><i class="fas fa-calendar-alt"></i> Check Availability</a>
+        <a href="https://wa.me/2126XXXXXXXX" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp Booking</a>
+        <a href="#contact" class="btn-outline">Contact Us</a>
+      </div>
+      <p style="margin-top:28px;color:var(--text-secondary);font-size:0.9rem;"><i class="fas fa-lock" style="margin-right:8px;"></i>Secure booking • No hidden fees • Direct support</p>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo">Amrous <span>Dar</span></a>
+          <p>Authentic Moroccan hospitality in the heart of the Middle Atlas Mountains.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#rooms">Rooms</a></li>
+            <li><a href="#restaurant">Dining</a></li>
+            <li><a href="#activities">Activities</a></li>
+            <li><a href="#offers">Special Offers</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms &amp; Conditions</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Stay Connected</h4>
+          <ul>
+            <li><a href="#"><i class="fas fa-envelope" style="margin-right:8px;color:var(--gold);"></i> Newsletter</a></li>
+            <li><a href="https://wa.me/2126XXXXXXXX" target="_blank"><i class="fab fa-whatsapp" style="margin-right:8px;color:#25d366;"></i> WhatsApp</a></li>
+            <li><a href="#"><i class="fas fa-phone" style="margin-right:8px;color:var(--gold);"></i> +212 5 35 56 XX XX</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Amrous Dar. All rights reserved.</span>
+        <span>Made with <i class="fas fa-heart"></i> in Azrou</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ WHATSAPP FLOAT ============ -->
+  <a href="https://wa.me/2126XXXXXXXX" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- ============ JAVASCRIPT ============ -->
+  <script>
+    // ----- Hamburger Menu -----
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('open');
+    });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('open');
+      });
+    });
+
+    // ----- Header scroll effect -----
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // ----- Scroll Reveal Animations -----
+    const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+    reveals.forEach(el => revealObserver.observe(el));
+
+    // ----- Contact Form -----
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Thank you for your message! We will get back to you shortly.');
+      this.reset();
+    });
+
+    // ----- Language Switcher (UI demo) -----
+    document.querySelectorAll('.lang-switch button').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.lang-switch button').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        // In a real site, you'd change content here; we just show a placeholder alert.
+        alert('Language switched to ' + this.textContent.trim() + ' (demo)');
+      });
+    });
+
+    // ----- Smooth anchor scroll with offset -----
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          const offsetTop = target.getBoundingClientRect().top + window.pageYOffset - 80;
+          window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // ----- Gallery lightbox (simple) -----
+    document.querySelectorAll('.gallery-grid img').forEach(img => {
+      img.addEventListener('click', function() {
+        const overlay = document.createElement('div');
+        overlay.style.cssText = `
+          position: fixed; inset: 0; background: rgba(0,0,0,0.9);
+          display: flex; align-items: center; justify-content: center;
+          z-index: 9999; cursor: pointer; backdrop-filter: blur(8px);
+        `;
+        const clone = this.cloneNode();
+        clone.style.maxWidth = '90vw';
+        clone.style.maxHeight = '90vh';
+        clone.style.borderRadius = '12px';
+        clone.style.boxShadow = '0 40px 80px rgba(0,0,0,0.8)';
+        overlay.appendChild(clone);
+        document.body.appendChild(overlay);
+        overlay.addEventListener('click', () => overlay.remove());
+      });
+    });
+  </script>
+</body>
+</html>
